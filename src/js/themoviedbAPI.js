@@ -11,14 +11,25 @@ export class TheMoviebdhAPI {
 
   getFavoriteFilms() {
     return fetch(
-      `${this.#BASE_URL}/trending/all/week?query=${this.keyword}&page=${
-        this.page
-      }&per_page=12&api_key=${this.#API_KEY}`,
+      `${this.#BASE_URL}/trending/all/week?api_key=${this.#API_KEY}`,
     ).then(response => {
       if (!response.ok) {
         throw new Error(response.status);
       }
 
+      return response.json();
+    });
+  }  
+
+  searchFilms() {
+    return fetch(
+      `${this.#BASE_URL}/trending/all/week?query=${this.keyword}&page=${
+        this.page
+      }&api_key=${this.#API_KEY}`,
+    ).then(response => {
+      if (!response.ok) {
+        throw new Error(response.status);
+      }
       return response.json();
     });
   }  

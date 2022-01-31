@@ -9,7 +9,9 @@ const galleryListEl = document.querySelector('.js-gallery');
 
 const theMoviebdhAPI = new TheMoviebdhAPI();
 
-theMoviebdhAPI.getFavoriteFilms().then(data => {
+theMoviebdhAPI.getFavoriteFilms().then(({results:data}) => {
     console.log(data);
     galleryListEl.insertAdjacentHTML('beforeend', galleryCardsTemplate(data));
   });
+
+  
