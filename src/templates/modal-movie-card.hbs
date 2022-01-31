@@ -1,32 +1,50 @@
 {{#each this}}
 <div class="movie-modal-card">
     <div class="movie-poster-container">
-        <img class="modal-movie-poster" src="https://image.tmdb.org/t/p/original{{poster_path}}" alt="{{original_title}} poster" data-id={{id}}>
-            {{!-- <button type="button" class="youtube-btn youtubeBtn-js" data-tailer="youtube" data-id={{id}}>
-                <svg class="modal-play-icon" width="100" height="100"></svg>
-            </button> --}}
+        <img class="modal-movie-poster" src="https://{{poster_path}}" alt="{{original_title}} poster" data-id={{id}}>
     </div>
-        <a class="gallery-link" href="{{largeImageURL}}">
-            <img class="gallery-item__img" src='{{webformatURL}}' alt='{{tags}}' loading='lazy' />
-            <div class="info">
-                <p class="info-item">
-                <b>Likes</b>
-                <span>{{likes}}</span>
-                </p>
-                <p class="info-item">
-                <b>Views</b>
-                    <span>{{views}}</span>
-                </p>
-                <p class="info-item">
-                <b>Comments</b>
-                <span>{{comments}}</span>
-                </p>
-                <p class="info-item">
-                <b>Downloads</b>
-                <span>{{downloads}}</span>
-                </p>
-            </div>
-        </a>
+
+     <div class="film-information">
+        <div>
+            <h2 class="film-title">{{title}}</h2>
+            <ul>
+                <li class="film-item">
+                    <p class="film-details ">Vote / Votes</p>
+                    <p class="film-info--uper">
+                        <span class=" film-rating--orange">{{vote_average}}</span>
+                        <span class="film-rating--divider"> / </span>
+                        <span>{{vote_count}}</span>
+                    </p>
+                </li>
+                <li class="film-item">
+                    <p class="film-details ">Popularity</p>
+                    <p class="film-info--uper">{{popularity}}</p>
+                </li>
+                <li class="film-item">
+                    <p class="film-details">Original title</p>
+                    <p>{{original_title}}</p>
+                </li>
+                <li class="film-item">
+                    <p class="film-details">Genre</p>
+
+                    <p class="film-info">{{#each genres}}
+                    <span class="film-info__genre_data">{{this.name}}</span>
+                    {{/each}}</p>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <h3 class="film__about__title">About</h3>
+            <p class="film__about__text">
+                {{overview}}
+            </p>
+        </div>
+        <div class="film__button__wrapper">
+            <button type="button" class=" film__button btn__watch" data-id="{{id}}">Add to watched</button>
+            <button type="button" class=" film__button btn__queue" data-id="{{id}}">Add to queue</button>
+        </div>
+        <button type="button" class="close__button" data-action="close-modal"></button>
+    </div>
     </div>
 </div>
 {{/each}}
