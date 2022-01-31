@@ -28,4 +28,5 @@
   "dependencies": {
     "tui-pagination": "^3.4.1"
   }
+
 }
