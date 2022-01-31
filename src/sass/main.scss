@@ -1,7 +1,8 @@
-/*
- * Главный файл стилей.
- * Все паршалы подключаются сюда.
- */
-
-// Стили для файла с примером HTML-фрагмента
-@import './example';
+// Импорт Миксинов
+@import './utils/mixins';
+// Импорт общх стилей
+@import './utils/comon-styles';
+// Импорт переменных
+@import './utils/variables';
+// Импорт стилей элементов галереи
+@import './components/gallery-elements';
