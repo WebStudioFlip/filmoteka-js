@@ -1,27 +1,10 @@
 :root {
-    //  colors
-    
-    --primary-text-color   : #2e2520;
-    --secondary-text-color : #000000;
-    --primary-bgr-color    : #fef3e4;
-    --secondary-bgr-color  : #ffffff;
-    --modal-bgr-color      : #fffff9;
-    --modal-primary-color  : #ab816c;
-    --modal-secondary-color: #ab816c80;
-    --hover-color          : #876655;
-    --circle-color         : #FEF3E4;
-  
-    // shadows
-    
-    --shadow-circle      : 0px 4px 4px 0px #ab816c40;
-    --shadow-modal-first : 4px 4px 4px 0px #ab816c26;
-    --shadow-modal-second: -4px -4px 4px 0px #ab816c26;
-    --shadow-circle      : 0px 4px 4px rgba(171, 129, 108, 0.25);
-  
-    // fonts
-    
-    --primary-font: Roboto;    
-    // animation
-    
-    --animation   : 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  }
+  //  colors
+  --primary-text-color: #ffffff;
+  --secondary-text-color: #000000;
+  --focus-color: #ff6b08;
+  --footer-bg-color: #f7f7f7;
+
+  // fonts
+  --primary-font: 'Roboto', sans-serif;
+}

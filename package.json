@@ -13,7 +13,7 @@
     "url": "git+https://github.com/WebStudioFlip/coon-friends-filmoteka-js.git"
   },
   "keywords": [],
-  "author": "Alexander Repeta <alexander.repeta@gmail.com>",
+  "author": "Yevhen Pedchenko <pedchenko.yevhen@gmail.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/WebStudioFlip/coon-friends-filmoteka-js/issues"
@@ -25,5 +25,8 @@
     "posthtml-include": "^1.6.2",
     "sass": "^1.32.8"
   },
-  "dependencies": {}
+  "dependencies": {
+    "tui-pagination": "^3.4.1"
+  }
+
 }
