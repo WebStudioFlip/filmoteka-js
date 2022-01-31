@@ -2,9 +2,17 @@
   fill: green;
 }
 
-.home-menu {
+.home-menu li {
   color: green;
 }
 
+a {
+  color: greenyellow;
+}
+
 .buttons-menu {
+}
+.header {
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+    url(../images/header-bg.jpg);
 }
