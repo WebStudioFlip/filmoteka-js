@@ -24,6 +24,7 @@ ul {
 /* Убираем лишние стили ссылок */
 a {
   text-decoration: none;
+  color: inherit;
 }
 
 /* Общие стили картинок */
@@ -31,4 +32,8 @@ img {
   max-width: 100%;
   height: auto;
   display: block;
+}
+.container {
+  padding-left: 71px;
+  padding-right: 71px;
 }
