@@ -4,12 +4,12 @@
 import { TheMoviebdhAPI } from './themoviedbAPI';
 import galleryCardsTemplate from '../templates/home-gallery-elements.hbs';
 
-const searchFormEl = document.querySelector('.js-search-form');
-const galleryListEl = document.querySelector('.js-gallery');
+const searchFormEl = document.querySelector('.search-form');
+const galleryListEl = document.querySelector('.gallery');
 
 const theMoviebdhAPI = new TheMoviebdhAPI();
 
-theMoviebdhAPI.getFavoriteFilms().then(data => {
+theMoviebdhAPI.getFavoriteFilms().then(({ results: data }) => {
   console.log(data);
   galleryListEl.insertAdjacentHTML('beforeend', galleryCardsTemplate(data));
 });
