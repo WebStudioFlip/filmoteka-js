@@ -40,7 +40,7 @@ export class TheMoviebdhAPI {
       .catch(err=>console.log(err));
     });
   }
-  }  
+  
 
   getGenresList (){
     return fetch(
