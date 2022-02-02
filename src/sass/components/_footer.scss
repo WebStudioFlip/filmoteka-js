@@ -6,8 +6,40 @@
   height: 77px;
   background-color: var(--footer-bg-color);
   color: var(--footer-text-color);
+  font-size: 16px;
+  line-height: 1.18;
 
-  @include mq(mobile) {
+  @include mq(mobile-only) {
+    flex-direction: column;
     height: 100px;
   }
+}
+
+.footer-text {
+  @include mq(mobile-only) {
+    margin-bottom: 10px;
+  }
+}
+
+.footer-policy::before {
+    content: "";
+    background: var(--footer-text-color);
+    width: 1px;
+    height: 16px;
+    float: left;
+    margin: 0 10px;
+
+}
+
+.footer-policy::after {
+    content: "";
+    background: var(--footer-text-color);
+    width: 1px;
+    height: 16px;
+    float: right;
+    margin: 0 10px;
+}
+
+.footer-link {
+  text-decoration: underline;
 }
