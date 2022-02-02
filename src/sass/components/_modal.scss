@@ -10,11 +10,11 @@
   overflow: scroll;
 }
 
-.backdrop.is-hidden {
-  visibility: hidden;
-  opacity: 0;
-  pointer-events: none;
-}
+// .backdrop.is-hidden {
+//   visibility: hidden;
+//   opacity: 0;
+//   pointer-events: none;
+// }
 
 .modal {
   @include mq(mobile-only) {
