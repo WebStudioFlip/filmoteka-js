@@ -13,7 +13,7 @@ export class TheMoviebdhAPI {
     this.getFavoriteFilms()
   }
 
-  getFavoriteFilms() {
+   getFavoriteFilms() {
     return fetch(
       `${this.#BASE_URL}/trending/all/week?api_key=${this.#API_KEY}`,
     ).then(response => {
@@ -21,7 +21,8 @@ export class TheMoviebdhAPI {
         throw new Error(response.status);
       }
       return response.json();
-    }).then(result=>this.currentList = result.results)
+    }).then(result=>{this.currentList = result.results
+    return this.currentList})
     .catch(err=>console.log(err));
   }  
 

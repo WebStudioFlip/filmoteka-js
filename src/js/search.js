@@ -10,4 +10,5 @@ const galleryListEl = document.querySelector('.gallery');
 
 const theMoviebdhAPI = new TheMoviebdhAPI();
 
-galleryListEl.insertAdjacentHTML('beforeend', galleryCardsTemplate(theMoviebdhAPI.currentList));
+theMoviebdhAPI.getFavoriteFilms().then((data)=>galleryListEl.insertAdjacentHTML('beforeend', galleryCardsTemplate(data)))
+
