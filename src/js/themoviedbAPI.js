@@ -7,29 +7,51 @@ export class TheMoviebdhAPI {
   constructor(keyword = null) {
     this.page = 1;
     this.keyword = keyword;
+    this.genres = [];
+    this.getGenresList ()
+    this.currentList = []
+    this.getFavoriteFilms()
   }
 
-  getFavoriteFilms() {
-    return fetch(`${this.#BASE_URL}/trending/all/week?api_key=${this.#API_KEY}`).then(response => {
-      if (!response.ok) {
-        throw new Error(response.status);
-      }
 
-      return response.json();
-    });
-  }
-
-  searchFilms() {
+   getFavoriteFilms() {
     return fetch(
-      `${this.#BASE_URL}/trending/all/week?query=${this.keyword}&page=${this.page}&api_key=${
-        this.#API_KEY
-      }`,
+      `${this.#BASE_URL}/trending/all/week?api_key=${this.#API_KEY}`,
     ).then(response => {
       if (!response.ok) {
         throw new Error(response.status);
       }
       return response.json();
     });
+  }
+
+  searchFilms() {
+    return fetch(
+      `${this.#BASE_URL}/search/movie?query=${this.keyword}&page=${
+        this.page
+      }&api_key=${this.#API_KEY}`,
+    ).then(response => {
+      if (!response.ok) {
+        throw new Error(response.status);
+      }
+      return response.json()
+      .then(result=>{this.currentList = result.results
+                    return this.currentList})
+      .catch(err=>console.log(err));
+    });
+  }
+  }  
+
+  getGenresList (){
+    return fetch(
+      `${this.#BASE_URL}/genre/movie/list?api_key=${this.#API_KEY}`,
+    ).then(response => {
+      if (!response.ok) {
+        throw new Error(response.status);
+      }
+      return response.json();
+    }).then(result=>this.genres = result.genres)
+    .catch(err=>console.log(err));
   }
 
   searchFilmsCompletes(movieId) {
