@@ -1,10 +1,11 @@
 import movieDetails from '../templates/modal-movie-card.hbs';
-import TheMoviebdhAPI from './themoviedbAPI';
+import {searchFilmsCompletes} from './themoviedbAPI'
 
 const modalBox = document.querySelector('.modal-card-container');
 const modalCloseBtn = document.querySelector('.modal-btn-close');
 const backdropEl = document.querySelector('.backdrop');
-const movieGalleryEl = document.querySelector('.film-card');
+const movieGalleryEl = document.querySelector('.gallery');
+let movieId =634649;
 
 movieGalleryEl.addEventListener('click', onClickGallery);
 modalCloseBtn.addEventListener('click', onCloseBtn);
@@ -16,14 +17,13 @@ function onClickGallery(event) {
   if (event.target.nodeName !== 'IMG' && event.target.nodeName !== 'H2') {
     return;
   } else {
+    
     backdropEl.classList.remove('is-hidden');
-
-    const tmdbApi = new TheMoviebdhAPI();
-    const movieId = null;
-
-    tmdbApi
-      .searchFilmsCompletes(movieId)
+    
+    
+    searchFilmsCompletes(movieId)
       .then(data => {
+        console.log(data)
         modalBox.innerHTML = movieDetails(data);
       })
       .catch(console.log);
