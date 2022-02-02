@@ -1,7 +1,6 @@
-{{#each this}}
 <div class="movie-modal-card">
     <div class="movie-poster-container">
-        <img class="modal-movie-poster" src="https://www.themoviedb.org/t/p/original{{poster_path}}" alt="{{original_title}} poster" data-id={{id}}>
+        <img class="modal-movie-poster" src="https://www.themoviedb.org/t/p/original{{poster_path}}" alt="{{original_title}} poster">
     </div>
 
     <div class="film-information">
@@ -40,9 +39,8 @@
             </p>
         </div>
         <div class="film-button-wrapper">
-            <button type="button" class=" film-button btn-watch" data-id="{{id}}">Add to watched</button>
-            <button type="button" class=" film-button btn-queue" data-id="{{id}}">Add to queue</button>
+            <button type="button" class=" film-button btn-watch">Add to watched</button>
+            <button type="button" class=" film-button btn-queue">Add to queue</button>
         </div>
     </div>
 </div>
-{{/each}}

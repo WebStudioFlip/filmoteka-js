@@ -13,6 +13,7 @@ export class TheMoviebdhAPI {
     this.getFavoriteFilms()
   }
 
+
    getFavoriteFilms() {
     return fetch(
       `${this.#BASE_URL}/trending/all/week?api_key=${this.#API_KEY}`,
@@ -21,10 +22,8 @@ export class TheMoviebdhAPI {
         throw new Error(response.status);
       }
       return response.json();
-    }).then(result=>{this.currentList = result.results
-    return this.currentList})
-    .catch(err=>console.log(err));
-  }  
+    });
+  }
 
   searchFilms() {
     return fetch(
@@ -36,9 +35,11 @@ export class TheMoviebdhAPI {
         throw new Error(response.status);
       }
       return response.json()
-      .then(result=>this.currentList = result.results)
+      .then(result=>{this.currentList = result.results
+                    return this.currentList})
       .catch(err=>console.log(err));
     });
+  }
   }  
 
   getGenresList (){
@@ -52,6 +53,7 @@ export class TheMoviebdhAPI {
     }).then(result=>this.genres = result.genres)
     .catch(err=>console.log(err));
   }
+
   searchFilmsCompletes(movieId) {
     return fetch(`${this.#BASE_URL}/movie/${movieId}?api_key=${this.#API_KEY}`).then(response => {
       if (!response.ok) {
@@ -60,5 +62,4 @@ export class TheMoviebdhAPI {
       return response.json();
     });
   }
-
 }
