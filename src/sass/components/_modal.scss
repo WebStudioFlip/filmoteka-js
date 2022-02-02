@@ -4,13 +4,13 @@
   height: 100%;
   left: 0px;
   top: 0px;
-  background-color: var(--secondary-text-color);
-  opacity: 0.25;
-  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: rgba(0, 0, 0, 0.25);
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 2;
+  overflow: scroll;
 }
 
-.is-hidden {
+.backdrop.is-hidden {
   visibility: hidden;
   opacity: 0;
   pointer-events: none;
@@ -49,9 +49,10 @@
     position: absolute;
     top: 10px;
     right: 10px;
-    fill: var(--secondary-text-color);
+    stroke: var(--secondary-text-color);
     border: none;
     cursor: pointer;
+    background-color: var(--primary-text-color);
   }
 
   &-btn-icon {
@@ -62,16 +63,13 @@
     right: 10px;
     width: 30px;
     height: 30px;
-    fill: var(--secondary-text-color);
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 50%;
     z-index: 10;
     cursor: pointer;
   }
 
   &-btn-close:focus &-btn-icon,
   &-btn-close:hover &-btn-icon {
-    fill: var(--focus-color);
+    stroke: var(--focus-color);
   }
 
   &-card-container {
