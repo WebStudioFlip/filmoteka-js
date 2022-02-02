@@ -1,30 +1,36 @@
 .header {
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-    url(../images/header-bg.jpg);
-  padding-top: 48px;
-  padding-bottom: 97px;
+    url(../images/bg-header-home.jpg);
   background-size: contain;
+  width: 100%;
+  // background-color: grey;
 }
 
-.header-container {
-  display: flex;
-  width: 280px;
+// .header-container {
+//   width: 1200px;
 
-  @include mq(tablet) {
-    width: 618px;
-  }
-  @include mq(desktop) {
-    width: 882px;
-  }
-}
-.film-svg {
+//   @include mq(tablet) {
+//     width: 618px;
+//   }
+//   @include mq(desktop) {
+//     width: 882px;
+//   }
+// }
+.logo-link {
   cursor: pointer;
-  stroke: var(--svg-logo-header);
+  stroke: grey;
   margin-right: 12px;
+}
+.logo-link:hover,
+.logo-link:focus {
+  stroke: var(--focus-color);
 }
 
 .logo-text {
   color: var(--primary-text-color);
+  font-size: 30px;
+  line-height: 1.2;
+  font-weight: 500;
 }
 
 ::placeholder {
@@ -36,19 +42,37 @@
 }
 .input-box {
   background-color: transparent;
-
+  width: 336px;
+  border: none;
+  border-bottom: 0.5px solid var(--primary-text-color);
+  position: absolute;
+  color: var(--primary-text-color);
+}
+.input-box:focus,
+.input-box:active {
+  outline: none;
   border: none;
   border-bottom: 0.5px solid var(--primary-text-color);
 }
+
 .search-film-button {
   background-color: transparent;
   border: none;
+  position: relative;
+  right: -318px;
 }
 .home-menu {
   color: var(--primary-text-color);
   text-transform: uppercase;
+  display: inline-flex;
+  padding-top: 53px;
+  font-size: 14px;
+  line-height: 1.1;
+  font-weight: 500;
 }
-
+.home-menu-link:first-child {
+  padding-left: 303px;
+}
 .logo-link {
   display: inline-flex;
   align-items: baseline;
@@ -56,17 +80,39 @@
 .logo-text {
   margin-left: 7px;
 }
-.home-menu {
-  display: inline-flex;
-  padding-right: auto;
-}
+
 .search-form-block {
-  display: flex;
-  margin-left: auto;
-  margin-right: auto;
+  margin: auto;
+  width: 336px;
+  height: 18px;
+  padding-bottom: 97px;
+  padding-top: 113px;
 }
+
 .logo-info {
   display: flex;
   justify-content: space-between;
   font-size: 30px;
+  padding-top: 41px;
+}
+
+.library-link {
+  margin-left: 40px;
+}
+.header-positioning {
+  display: flex;
+  justify-content: space-between;
+}
+.home-link {
+  position: relative;
+}
+.current-page::after {
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 3px;
+  left: 0px;
+  top: 14px;
+  background-color: var(--focus-color);
+  margin-top: 3px;
 }
