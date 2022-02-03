@@ -1,12 +1,11 @@
+
 <div class="movie-modal-card">
-    <div class="movie-poster-container">
-        <img class="modal-movie-poster" src="https://www.themoviedb.org/t/p/original{{poster_path}}" alt="{{original_title}} poster">
-    </div>
+        <img class="modal-movie-poster" src="https://image.tmdb.org/t/p/original{{poster_path}}" alt="{{original_title}} poster">
 
     <div class="film-information">
         <div>
             <h2 class="film-title">{{title}}</h2>
-            <ul>
+            <ul class="film-list">
                 <li class="film-item">
                     <p class="film-details ">Vote / Votes</p>
                     <p class="film-info--uper">
@@ -21,7 +20,7 @@
                 </li>
                 <li class="film-item">
                     <p class="film-details">Original title</p>
-                    <p>{{original_title}}</p>
+                    <p class="original">{{original_title}}</p>
                 </li>
                 <li class="film-item">
                     <p class="film-details">Genre</p>
