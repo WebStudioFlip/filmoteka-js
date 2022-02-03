@@ -22,10 +22,6 @@
   transform: translate(-50%, -50%);
   background-color: var(--primary-text-color);
   z-index: 1000;
-  // padding-bottom: 45px;
-  // padding-top: 45px;
-  // padding-left: 20px;
-  // padding-right: 20px;
   max-height: 100vh;
   box-sizing: border-box;
   overflow: auto;
@@ -146,17 +142,18 @@
   font-family: var(--primary-font);
   font-weight: 500;
   margin-bottom: 20px;
-  @include mq(desktop) {
-    font-size: 30px;
-    line-height: 1.17;
+  text-transform: uppercase;
+  @include mq(mobile) {
+    font-size: 20px;
+    line-height: 1.15;
   }
   @include mq(tablet) {
     font-size: 20px;
     line-height: 1.15;
   }
-  @include mq(mobile) {
-    font-size: 20px;
-    line-height: 1.15;
+  @include mq(desktop) {
+    font-size: 30px;
+    line-height: 1.17;
   }
 }
 
@@ -184,6 +181,9 @@
   line-height: 1.2;
 
   color: #8c8c8c;
+}
+.original {
+  text-transform: uppercase;
 }
 
 .film-rating--orange {
@@ -220,22 +220,21 @@
   font-size: 12px;
   line-height: 1.2;
   margin-bottom: 21px;
-  text-align: justify;
+  text-align: left;
+  margin-right: 5px;
 }
 
 .film-button-wrapper {
   display: flex;
-  // @include mq(desktop) {
-  // }
-  // @include mq(tablet) {
-  //   font-size: 20px;
-  //   line-height: 1.15;
-  // }
-  // @include mq(mobile) {
-  //   font-size: 20px;
-  //   line-height: 1.15;
-  //   padding-bottom: 40px;
-  // }
+  align-items: stretch;
+
+  @include mq(mobile) {
+    padding-bottom: 40px;
+  }
+
+  @include mq(tablet) {
+    padding-bottom: 0px;
+  }
 }
 
 .film-button {
@@ -243,6 +242,7 @@
   font-weight: 500;
   font-size: 12px;
   line-height: 1.2;
+  margin-right: 5px;
 
   width: 112px;
   height: 44px;
