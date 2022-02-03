@@ -3,6 +3,17 @@
     url(../images/bg-header-home.jpg);
   background-size: contain;
   width: 100%;
+
+  padding-bottom: 97px;
+  padding-top: 46px;
+
+  @include mq(tablet) {
+    padding-top: 41px;
+  }
+
+  @include mq(desktop) {
+    padding-top: 41px;
+  }
 }
 
 // .header-container {
@@ -64,7 +75,6 @@
   color: var(--primary-text-color);
   text-transform: uppercase;
   display: inline-flex;
-  padding-top: 53px;
   font-size: 14px;
   line-height: 1.1;
   font-weight: 500;
@@ -84,15 +94,12 @@
   margin: auto;
   width: 336px;
   height: 18px;
-  padding-bottom: 97px;
-  padding-top: 113px;
 }
 
 .logo-info {
   display: flex;
   justify-content: space-between;
   font-size: 30px;
-  padding-top: 41px;
 }
 
 .library-link {
@@ -101,6 +108,16 @@
 .header-positioning {
   display: flex;
   justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 41px;
+
+  @include mq(tablet) {
+    margin-bottom: 37px;
+  }
+
+  @include mq(desktop) {
+    margin-bottom: 37px;
+  }
 }
 .current-page {
   position: relative;

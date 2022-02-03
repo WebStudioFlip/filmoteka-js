@@ -1,17 +1,4 @@
 .film-card {
-  display: inline-block;
-
-  width: 280px;
-  height: 398px;
-
-  @include mq(tablet) {
-    width: 294px;
-  }
-
-  @include mq(desktop) {
-    width: 274px;
-  }
-
   // .film-card__img
   &__img {
     width: 280px;
