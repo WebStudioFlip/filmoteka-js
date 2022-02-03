@@ -1,0 +1,43 @@
+.footer {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  width: 100%;
+  height: 77px;
+  background-color: var(--footer-bg-color);
+  color: var(--footer-text-color);
+  font-size: 16px;
+  line-height: 1.18;
+
+  @include mq(mobile-only) {
+    flex-wrap: wrap;
+    height: 100px;
+  }
+}
+
+.footer-text {
+    margin: 5px 0;
+}
+
+.footer-policy::before {
+  content: '';
+  background: var(--footer-text-color);
+  width: 1px;
+  height: 19px;
+  float: left;
+  margin: 0 5px;
+}
+
+.footer-policy::after {
+  content: '';
+  background: var(--footer-text-color);
+  width: 1px;
+  height: 19px;
+  float: right;
+  margin: 0 5px;
+}
+
+.footer-link {
+  text-decoration: underline;
+}
