@@ -28,9 +28,9 @@ export class TheMoviebdhAPI {
     });
   }
 
-  searchFilms() {
+  searchFilms(keyword) {
     return fetch(
-      `${this.#BASE_URL}/search/movie?query=${this.keyword}&page=${this.page}&api_key=${
+      `${this.#BASE_URL}/search/movie?query=${keyword}&page=${this.page}&api_key=${
         this.#API_KEY
       }`,
     )
