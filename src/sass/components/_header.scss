@@ -3,18 +3,46 @@
     url(../images/bg-header-home.jpg);
   background-size: contain;
   width: 100%;
+  padding-bottom: 97px;
+  padding-top: 46px;
+  background-repeat: no-repeat;
+  background-size: auto;
+
+  @include mq(tablet) {
+    padding-top: 41px;
+    background-size: cover;
+  }
+  @include mq(desktop) {
+    padding-top: 41px;
+    background-size: cover;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url(../images/bg-header-home.jpg);
+  }
+}
+.search-form-block {
+  max-width: 280px;
+  margin: auto;
+  @include mq(desktop) {
+    max-width: 336px;
+  }
+}
+.logo-text {
+  margin-left: 7px;
+
+  @include mq(desktop) {
+    color: var(--primary-text-color);
+    font-size: 30px;
+    line-height: 1.2;
+    font-weight: 500;
+  }
+  @include mq(tablet) {
+    color: var(--primary-text-color);
+    font-size: 30px;
+    line-height: 1.2;
+    font-weight: 500;
+  }
 }
 
-// .header-container {
-//   width: 1200px;
-
-//   @include mq(tablet) {
-//     width: 618px;
-//   }
-//   @include mq(desktop) {
-//     width: 882px;
-//   }
-// }
 .logo-link {
   cursor: pointer;
   stroke: grey;
@@ -23,13 +51,6 @@
 .logo-link:hover,
 .logo-link:focus {
   stroke: var(--focus-color);
-}
-
-.logo-text {
-  color: var(--primary-text-color);
-  font-size: 30px;
-  line-height: 1.2;
-  font-weight: 500;
 }
 
 ::placeholder {
@@ -41,7 +62,7 @@
 }
 .input-box {
   background-color: transparent;
-  width: 336px;
+  // width: 336px;
   border: none;
   border-bottom: 0.5px solid var(--primary-text-color);
   position: absolute;
@@ -53,7 +74,6 @@
   border: none;
   border-bottom: 0.5px solid var(--primary-text-color);
 }
-
 .search-film-button {
   background-color: transparent;
   border: none;
@@ -64,7 +84,6 @@
   color: var(--primary-text-color);
   text-transform: uppercase;
   display: inline-flex;
-  padding-top: 53px;
   font-size: 14px;
   line-height: 1.1;
   font-weight: 500;
@@ -76,31 +95,26 @@
   display: inline-flex;
   align-items: baseline;
 }
-.logo-text {
-  margin-left: 7px;
-}
-
-.search-form-block {
-  margin: auto;
-  width: 336px;
-  height: 18px;
-  padding-bottom: 97px;
-  padding-top: 113px;
-}
 
 .logo-info {
   display: flex;
   justify-content: space-between;
   font-size: 30px;
-  padding-top: 41px;
 }
-
 .library-link {
   margin-left: 40px;
 }
 .header-positioning {
   display: flex;
   justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 41px;
+  @include mq(tablet) {
+    margin-bottom: 37px;
+  }
+  @include mq(desktop) {
+    margin-bottom: 37px;
+  }
 }
 .current-page {
   position: relative;
@@ -115,7 +129,6 @@
   background-color: var(--focus-color);
   margin-top: 3px;
 }
-
 ///////////// library
 .header-library {
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
@@ -135,7 +148,6 @@
   margin-left: auto;
   margin-right: auto;
 }
-
 .queue-button {
   width: 136px;
   font-family: var(--primary-font);
@@ -147,7 +159,6 @@
   text-transform: uppercase;
   color: var(--primary-text-color);
   background-color: var(--focus-color);
-
   padding-left: 38px;
   padding-right: 38px;
   padding-top: 14px;
