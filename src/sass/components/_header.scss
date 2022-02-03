@@ -43,7 +43,7 @@
   border: none;
   padding-bottom: 4px;
   background-color: transparent;
-  width: 260px;
+  width: 100%;
   // margin-bottom: 7px;
   color: var(--primary-text-color);
   text-indent: 5px;
@@ -54,9 +54,14 @@
   border: none;
   display: flex;
   position: absolute;
+  align-items: center;
+  justify-content: flex-end;
+  height: 23px;
+  width: 23px;
   padding: 0;
-  right: 0px;
-  top: 7px;
+  transform: translate(-50%, -50%);
+  left: 96%;
+  top: 10px;
   cursor: pointer;
 }
 
