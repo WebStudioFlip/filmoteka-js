@@ -26,6 +26,7 @@ searchFormEl.addEventListener('submit', event => {
       );
       return;
     }
+    
     galleryListEl.innerHTML = '';
     galleryListEl.insertAdjacentHTML('beforeend', galleryCardsTemplate(data));
   });
