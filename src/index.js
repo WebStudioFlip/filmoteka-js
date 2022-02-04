@@ -4,3 +4,4 @@ import './js/search';
 import './js/scrollUpBtn';
 // import './js/renderFilmsByKeyword';
 import './js/modal';
+import './js/localStorage';

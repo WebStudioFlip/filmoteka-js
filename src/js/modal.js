@@ -1,5 +1,6 @@
 import movieDetails from '../templates/modal-movie-card.hbs';
 import { searchFilmsCompletes } from './themoviedbAPI';
+import { AddToWatched, AddToQueue } from './localStorage';
 
 const modalBox = document.querySelector('.modal-card-container');
 const modalCloseBtn = document.querySelector('.modal-btn-close');
@@ -28,6 +29,8 @@ function onClickGallery(event) {
       .then(data => {
         console.log(data);
         modalBox.innerHTML = movieDetails(data);
+        AddToWatched();
+        AddToQueue();
       })
       .catch(console.log);
 
