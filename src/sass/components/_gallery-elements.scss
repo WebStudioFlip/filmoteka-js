@@ -9,14 +9,15 @@
   }
 
   // .film-card__img
-  &__img {
+  &__picture img {
+    border-radius: 5px;
+    margin-bottom: 10px;
     width: 280px;
-    height: 398px;
-
+    height: 402px;
     @include mq(tablet) {
       width: 294px;
+      height: 398px;
     }
-
     @include mq(desktop) {
       width: 274px;
     }
@@ -25,7 +26,6 @@
   // .film-card__title
   &__title {
     font-family: Roboto;
-    margin-top: 10px;
     margin-bottom: 2px;
 
     font-style: var(--primary-font);
@@ -54,8 +54,6 @@
     font-weight: 500;
     font-size: 12px;
     line-height: 1;
-    text-transform: uppercase;
-
     color: var(--focus-color);
   }
 
@@ -66,8 +64,7 @@
     font-weight: 500;
     font-size: 12px;
     line-height: 1;
-    text-transform: uppercase;
-
+    // text-transform: uppercase;
     color: var(--focus-color);
   }
 

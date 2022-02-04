@@ -13,7 +13,13 @@ backdropEl.addEventListener('click', closeBackdrop);
 function onClickGallery(event) {
   event.preventDefault();
 
-  if (event.target.nodeName !== 'IMG' && event.target.nodeName !== 'H2') {
+  if (
+    event.target.nodeName !== 'IMG' &&
+    event.target.nodeName !== 'H2' &&
+    event.target.nodeName !== 'P' &&
+    event.target.nodeName !== 'UL' &&
+    event.target.nodeName !== 'LI'
+  ) {
     return;
   } else {
     backdropEl.classList.remove('is-hidden');
