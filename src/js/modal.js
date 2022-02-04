@@ -5,7 +5,7 @@ const modalBox = document.querySelector('.modal-card-container');
 const modalCloseBtn = document.querySelector('.modal-btn-close');
 const backdropEl = document.querySelector('.backdrop');
 const movieGalleryEl = document.querySelector('.gallery');
-const scrollUpBtn = document.querySelector('button#btn-back-to-top');
+const scrollUpBtn = document.querySelector('button.btn-back-to-top');
 
 movieGalleryEl.addEventListener('click', onClickGallery);
 modalCloseBtn.addEventListener('click', onCloseBtn);
@@ -18,9 +18,9 @@ function onClickGallery(event) {
     return;
   } else {
     backdropEl.classList.remove('is-hidden');
-    document.body.style.overflow = 'hidden';
-    document.body.style.paddingRight = '17px';
-    scrollUpBtn.style.display = 'none';
+    document.body.classList.add("overflow-hidden");
+    // scrollUpBtn.style.right = "37px";
+    scrollUpBtn.classList.add("btn-position");
 
     const movieId = event.target.closest('.film-card').dataset.filmId;
 
@@ -37,9 +37,8 @@ function onClickGallery(event) {
 
 function onCloseBtn() {
   backdropEl.classList.add('is-hidden');
-  document.body.style.paddingRight = '0';
-  document.body.style.overflow = 'visible';
-  scrollUpBtn.style.display = 'flex';
+  document.body.classList.remove("overflow-hidden");
+  scrollUpBtn.classList.remove("btn-position");
 
   window.removeEventListener('keydown', closeModalHandler);
 }

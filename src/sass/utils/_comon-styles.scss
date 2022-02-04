@@ -56,3 +56,10 @@ img {
     max-width: 1280px;
   }
 }
+
+.overflow-hidden {
+  @include mq(desktop) {
+    padding-right: 17px;
+    overflow: hidden;
+  }
+}
