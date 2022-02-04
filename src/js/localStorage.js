@@ -9,20 +9,32 @@ export function AddToWatched() {
 
   btnWatchedEl.addEventListener('click', event => {
     searchFilmsCompletes(Number(modalWindowEl.dataset.currentMovieId)).then(response => {
-      const responseString = [response.id];
-      localStorage.setItem('myLib', responseString);
-      console.log(localStorage);
-      // const myLibraryParsed = JSON.parse(localStorage.myLib);
-      // myLibraryParsed.push(response);
-      // console.log(myLibraryParsed);
+      if (localStorage.hasOwnProperty('myLib')) {
+        const myLibArr = [...JSON.parse(localStorage.getItem('myLib'))];
+        myLibArr.push(response);
+        localStorage.setItem('myLib', JSON.stringify(myLibArr));
+        console.log(myLibArr);
+      } else {
+        localStorage.setItem('myLib', JSON.stringify([response]));
+      }
     });
   });
 }
 
 export function AddToQueue() {
   const btnWatchedEl = document.querySelector('.btn-queue');
+  const modalWindowEl = document.querySelector('.movie-modal-card');
 
   btnWatchedEl.addEventListener('click', event => {
-    localStorage.setItem('Queue', JSON.stringify(response));
+    searchFilmsCompletes(Number(modalWindowEl.dataset.currentMovieId)).then(response => {
+      if (localStorage.hasOwnProperty('queue')) {
+        const myQueueArr = [...JSON.parse(localStorage.getItem('queue'))];
+        myQueueArr.push(response);
+        localStorage.setItem('queue', JSON.stringify(myQueueArr));
+        console.log(myQueueArr);
+      } else {
+        localStorage.setItem('queue', JSON.stringify([response]));
+      }
+    });
   });
 }
