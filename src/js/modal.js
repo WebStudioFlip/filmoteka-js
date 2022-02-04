@@ -8,7 +8,7 @@ const movieGalleryEl = document.querySelector('.gallery');
 
 movieGalleryEl.addEventListener('click', onClickGallery);
 modalCloseBtn.addEventListener('click', onCloseBtn);
-backdropEl.addEventListener('click', onCloseBtn);
+backdropEl.addEventListener('click', closeBackdrop);
 
 function onClickGallery(event) {
   event.preventDefault();
@@ -37,6 +37,12 @@ function onCloseBtn() {
 
 function closeModalHandler(event) {
   if (event.code === 'Escape') {
+    onCloseBtn();
+  }
+}
+
+function closeBackdrop(event) {
+  if (event.target === event.currentTarget) {
     onCloseBtn();
   }
 }
