@@ -21,3 +21,10 @@
     grid-row-gap: 30px;
   }
 }
+
+.main-container .tui-pagination .tui-is-selected,
+.main-container .tui-pagination .tui-is-selected:hover,
+.main-container .tui-pagination .tui-is-selected:focus{
+  background: #FF6B08;
+    border-color: #FF6B08;
+}
