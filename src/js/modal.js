@@ -9,7 +9,7 @@ const scrollUpBtn = document.querySelector('button#btn-back-to-top');
 
 movieGalleryEl.addEventListener('click', onClickGallery);
 modalCloseBtn.addEventListener('click', onCloseBtn);
-backdropEl.addEventListener('click', onCloseBtn);
+backdropEl.addEventListener('click', closeBackdrop);
 
 function onClickGallery(event) {
   event.preventDefault();
@@ -46,6 +46,12 @@ function onCloseBtn() {
 
 function closeModalHandler(event) {
   if (event.code === 'Escape') {
+    onCloseBtn();
+  }
+}
+
+function closeBackdrop(event) {
+  if (event.target === event.currentTarget) {
     onCloseBtn();
   }
 }
