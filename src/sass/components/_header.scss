@@ -68,29 +68,20 @@
 .logo-text {
   margin-left: 7px;
   font-size: 1px;
-  @include mq(desktop) {
-    color: var(--primary-text-color);
-    font-size: 30px;
-    line-height: 1.2;
-    font-weight: 500;
-  }
+
   @include mq(tablet) {
     color: var(--primary-text-color);
     font-size: 30px;
     line-height: 1.2;
     font-weight: 500;
   }
-}
 
-.logo-link {
-  cursor: pointer;
-  stroke: grey;
-  margin-right: 12px;
-  transition: stroke 500ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-.logo-link:hover,
-.logo-link:focus {
-  stroke: var(--focus-color);
+  @include mq(desktop) {
+    color: var(--primary-text-color);
+    font-size: 30px;
+    line-height: 1.2;
+    font-weight: 500;
+  }
 }
 
 ::placeholder {
@@ -112,21 +103,66 @@
 .home-menu-link:first-child {
   padding-left: 303px;
 }
+
 .logo-link {
-  display: inline-flex;
-  align-items: baseline;
+  stroke: grey;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover,
+  &:focus {
+    stroke: rgba(255, 143, 68, 0.863);
+  }
+
+  &:hover .logo-svg,
+  &:focus .logo-svg {
+    transform: rotate(360deg);
+  }
+
+  @include mq(tablet) {
+    display: inline-flex;
+    align-items: baseline;
+    margin-right: 12px;
+  }
+}
+
+.logo-svg {
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .logo-info {
-  display: flex;
-  justify-content: space-between;
-  font-size: 30px;
+  @include mq(tablet) {
+    display: flex;
+    justify-content: space-between;
+    font-size: 30px;
+
+    &:hover .logo-text,
+    &:focus .logo-text {
+      color: var(--focus-color);
+    }
+  }
+}
+
+.nav-link {
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover,
+  &:focus {
+    color: var(--focus-color);
+    stroke: rgba(255, 143, 68, 0.863);
+  }
 }
 .library-link {
   margin-left: 40px;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover,
+  &:focus {
+    color: var(--focus-color);
+    stroke: rgba(255, 143, 68, 0.863);
+  }
 }
 .current-page {
   position: relative;
+  color: var(--focus-color);
 }
 .current-page::after {
   position: absolute;
