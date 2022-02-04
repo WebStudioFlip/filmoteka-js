@@ -9,8 +9,8 @@ export class TheMoviebdhAPI {
     this.keyword = keyword;
     this.genres = [];
     this.getGenresList();
-    this.currentList = [];
-    this.getFavoriteFilms();
+    
+    
   }
 
   getFavoriteFilms() {
@@ -21,9 +21,11 @@ export class TheMoviebdhAPI {
         }
         return response
           .json()
-          .then(result => {
-            this.currentList = result.results;
-            return this.currentList;
+          .then(result => {     
+            for (let index = 0; index < result.results.length; index++) {
+              result.results[index].genre_ids =  result.results[index].genre_ids.map(el => this.decodeGenre(el))              
+            }          
+            return result.results;
           })
           .catch(err => console.log(err));
       },
@@ -42,9 +44,12 @@ export class TheMoviebdhAPI {
         }
         return response.json();
       })
-      .then(result => {
-        this.currentList = result.results;
-        return this.currentList;
+      .then(result => {         
+        for (let index = 0; index < result.results.length; index++) {
+          result.results[index].genre_ids =  result.results[index].genre_ids.map(el => this.decodeGenre(el))
+          
+        }              
+        return result;
       })
       .catch(err => console.log(err));
   }
@@ -59,6 +64,10 @@ export class TheMoviebdhAPI {
       })
       .then(result => (this.genres = result.genres))
       .catch(err => console.log(err));
+  }
+
+  decodeGenre(idGenre){
+    return this.genres.find(el => el.id === idGenre).name
   }
 }
 
