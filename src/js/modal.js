@@ -5,6 +5,7 @@ const modalBox = document.querySelector('.modal-card-container');
 const modalCloseBtn = document.querySelector('.modal-btn-close');
 const backdropEl = document.querySelector('.backdrop');
 const movieGalleryEl = document.querySelector('.gallery');
+const scrollUpBtn = document.querySelector('button#btn-back-to-top');
 
 movieGalleryEl.addEventListener('click', onClickGallery);
 modalCloseBtn.addEventListener('click', onCloseBtn);
@@ -17,6 +18,10 @@ function onClickGallery(event) {
     return;
   } else {
     backdropEl.classList.remove('is-hidden');
+    document.body.style.overflow = 'hidden';
+    document.body.style.paddingRight = '17px';
+    scrollUpBtn.style.display = 'none';
+
     const movieId = event.target.closest('.film-card').dataset.filmId;
 
     searchFilmsCompletes(movieId)
@@ -32,6 +37,10 @@ function onClickGallery(event) {
 
 function onCloseBtn() {
   backdropEl.classList.add('is-hidden');
+  document.body.style.overflow = 'visible';
+  document.body.style.paddingRight = '0';
+  scrollUpBtn.style.display = 'flex';
+
   window.removeEventListener('keydown', closeModalHandler);
 }
 
