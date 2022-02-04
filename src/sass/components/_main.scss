@@ -22,9 +22,28 @@
   }
 }
 
-.main-container .tui-pagination .tui-is-selected,
-.main-container .tui-pagination .tui-is-selected:hover,
-.main-container .tui-pagination .tui-is-selected:focus {
-  background: #ff6b08;
-  border-color: #ff6b08;
+.library {
+  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(1, 280px);
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+
+  @include mq(tablet) {
+    grid-template-columns: repeat(2, 293px);
+    grid-column-gap: 20px;
+    grid-row-gap: 30px;
+  }
+
+  @include mq(desktop) {
+    grid-template-columns: repeat(3, 274px);
+    grid-column-gap: 20px;
+    grid-row-gap: 30px;
+  }
+  .main-container .tui-pagination .tui-is-selected,
+  .main-container .tui-pagination .tui-is-selected:hover,
+  .main-container .tui-pagination .tui-is-selected:focus {
+    background: #ff6b08;
+    border-color: #ff6b08;
+  }
 }

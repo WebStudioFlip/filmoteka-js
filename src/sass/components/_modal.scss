@@ -1,6 +1,6 @@
 .backdrop {
   position: fixed;
-  width: 100%;
+  width: 100vw;
   height: 100%;
   left: 0px;
   top: 0px;
@@ -32,7 +32,7 @@
   max-height: 100vh;
   width: 280px;
   box-sizing: border-box;
-  overflow: auto;
+  overflow: hidden;
   border-radius: 5px;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
@@ -44,6 +44,7 @@
 
   @include mq(desktop) {
     width: 882px;
+    left: 49.5%;
   }
 
   &-btn-close {

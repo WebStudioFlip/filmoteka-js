@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 /* Убираем внутренние отступы */
 ul,
 ol {
@@ -49,5 +53,12 @@ img {
   }
   @include mq(desktop) {
     max-width: 1280px;
+  }
+}
+
+.overflow-hidden {
+  @include mq(desktop) {
+    padding-right: 17px;
+    overflow: hidden;
   }
 }
