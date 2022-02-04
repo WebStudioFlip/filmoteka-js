@@ -37,8 +37,8 @@ function onClickGallery(event) {
 
 function onCloseBtn() {
   backdropEl.classList.add('is-hidden');
-  document.body.style.overflow = 'visible';
   document.body.style.paddingRight = '0';
+  document.body.style.overflow = 'visible';
   scrollUpBtn.style.display = 'flex';
 
   window.removeEventListener('keydown', closeModalHandler);
