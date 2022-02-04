@@ -20,7 +20,6 @@ function onClickGallery(event) {
   } else {
     backdropEl.classList.remove('is-hidden');
     document.body.classList.add("overflow-hidden");
-    // scrollUpBtn.style.right = "37px";
     scrollUpBtn.classList.add("btn-position");
 
     const movieId = event.target.closest('.film-card').dataset.filmId;
