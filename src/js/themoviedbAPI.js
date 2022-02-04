@@ -8,9 +8,7 @@ export class TheMoviebdhAPI {
     this.page = 1;
     this.keyword = keyword;
     this.genres = [];
-    this.getGenresList();
-    
-    
+    this.getGenresList();       
   }
 
   getFavoriteFilms() {
