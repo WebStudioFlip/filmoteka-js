@@ -417,7 +417,7 @@ img {
           justify-content: center;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (280px);
+  -ms-grid-columns: repeat(1, 280px);
       grid-template-columns: repeat(1, 280px);
   grid-column-gap: 20px;
   grid-row-gap: 20px;
@@ -425,7 +425,7 @@ img {
 
 @media (min-width: 768px) {
   .gallery {
-    -ms-grid-columns: (293px);
+    -ms-grid-columns: repeat(2, 293px);
         grid-template-columns: repeat(2, 293px);
     grid-column-gap: 20px;
     grid-row-gap: 30px;
@@ -434,7 +434,7 @@ img {
 
 @media (min-width: 1280px) {
   .gallery {
-    -ms-grid-columns: (274px);
+    -ms-grid-columns: repeat(3, 274px);
         grid-template-columns: repeat(3, 274px);
     grid-column-gap: 20px;
     grid-row-gap: 30px;
@@ -447,7 +447,7 @@ img {
           justify-content: center;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (280px);
+  -ms-grid-columns: repeat(1, 280px);
       grid-template-columns: repeat(1, 280px);
   grid-column-gap: 20px;
   grid-row-gap: 20px;
@@ -455,7 +455,7 @@ img {
 
 @media (min-width: 768px) {
   .library {
-    -ms-grid-columns: (293px);
+    -ms-grid-columns: repeat(2, 293px);
         grid-template-columns: repeat(2, 293px);
     grid-column-gap: 20px;
     grid-row-gap: 30px;
@@ -464,7 +464,7 @@ img {
 
 @media (min-width: 1280px) {
   .library {
-    -ms-grid-columns: (274px);
+    -ms-grid-columns: repeat(3, 274px);
         grid-template-columns: repeat(3, 274px);
     grid-column-gap: 20px;
     grid-row-gap: 30px;
