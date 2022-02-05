@@ -27,7 +27,7 @@
                 <p class="film-details">Genre</p>
 
                 <p class="film-info">{{#each genres}}
-                <span class="genre-item">{{this.name}}</span>
+                <span class="genre-item">{{this.name}}{{#unless @last}}, &nbsp{{/unless}}</span>
                 {{/each}}</p>
             </li>
         </ul>
