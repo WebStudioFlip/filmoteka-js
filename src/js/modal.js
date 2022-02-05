@@ -13,8 +13,8 @@ modalCloseBtn.addEventListener('click', onCloseBtn);
 backdropEl.addEventListener('click', closeBackdrop);
 
 function onClickGallery(event) {
+  console.log(event.target.nodeName)
   event.preventDefault();
-
   if (event.target.nodeName !== 'IMG' && event.target.nodeName !== 'H2') {
     return;
   } else {
