@@ -81,9 +81,7 @@ g# Parcel boilerplate
 3. git checkout name_your_brunch
 4. git merge dev
 5. git push origin name_your_branch
-6. Не забываем про пул-риквест
-
-Команда которая запускает сборщик
+6. Не забываем про пул-риквест git merg Команда которая запускает сборщик
 
 Прописываем 1 раз в самом начале
 
