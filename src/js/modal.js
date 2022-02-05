@@ -20,6 +20,7 @@ function onClickGallery(event) {
   } else {
     backdropEl.classList.remove('is-hidden');
     document.body.classList.add("overflow-hidden");
+    document.body.style.overflow = "hidden";
     scrollUpBtn.classList.add("btn-position");
 
     const movieId = event.target.closest('.film-card').dataset.filmId;
@@ -40,6 +41,7 @@ function onClickGallery(event) {
 function onCloseBtn() {
   backdropEl.classList.add('is-hidden');
   document.body.classList.remove("overflow-hidden");
+  document.body.style.overflow = "visible";
   scrollUpBtn.classList.remove("btn-position");
 
   window.removeEventListener('keydown', closeModalHandler);
