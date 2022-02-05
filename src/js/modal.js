@@ -15,11 +15,18 @@ backdropEl.addEventListener('click', closeBackdrop);
 function onClickGallery(event) {
   console.log(event.target.nodeName)
   event.preventDefault();
-  if (event.target.nodeName !== 'IMG' && event.target.nodeName !== 'H2') {
+  if (
+    event.target.nodeName !== 'IMG' &&
+    event.target.nodeName !== 'H2' &&
+    event.target.nodeName !== 'P' &&
+    event.target.nodeName !== 'UL' &&
+    event.target.nodeName !== 'LI'
+  ) {
     return;
   } else {
     backdropEl.classList.remove('is-hidden');
     document.body.classList.add("overflow-hidden");
+    document.body.style.overflow = 'hidden';
     scrollUpBtn.classList.add("btn-position");
 
     const movieId = event.target.closest('.film-card').dataset.filmId;
@@ -40,6 +47,7 @@ function onClickGallery(event) {
 function onCloseBtn() {
   backdropEl.classList.add('is-hidden');
   document.body.classList.remove("overflow-hidden");
+  document.body.style.overflow = 'visible';
   scrollUpBtn.classList.remove("btn-position");
 
   window.removeEventListener('keydown', closeModalHandler);
