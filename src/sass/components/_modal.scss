@@ -1,12 +1,12 @@
 .backdrop {
   position: fixed;
-  width: 100%;
+  width: 100vw;
   height: 100%;
   left: 0px;
   top: 0px;
   background-color: rgba(0, 0, 0, 0.25);
   z-index: 2;
-  transition: all 700ms linear 0ms;
+  transition: all 500ms linear 0ms;
 }
 
 .backdrop.is-hidden {
@@ -27,18 +27,15 @@
   left: 50%;
   transform: translate(-50%, -50%) scale(1);
   transition: transform 500ms linear 500ms;
-  // transition: all 1000ms cubic-bezier(0.4, 0, 0.2, 1);
   background-color: var(--primary-text-color);
   z-index: 1000;
   max-height: 100vh;
+  width: 280px;
   box-sizing: border-box;
   overflow: auto;
   border-radius: 5px;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
-  @include mq(mobile) {
-    width: 280px;
-  }
 
   @include mq(tablet) {
     margin: auto;
@@ -47,6 +44,7 @@
 
   @include mq(desktop) {
     width: 882px;
+    left: 49.5%;
   }
 
   &-btn-close {
@@ -78,15 +76,15 @@
 }
 
 .modal-card-container {
-  @include mq(mobile) {
-    padding: 48px 20px 41px 20px;
-  }
+  padding: 48px 20px 41px 20px;
 
   @include mq(tablet) {
+    display: flex;
     padding: 42px 29px 40px 28px;
   }
 
   @include mq(desktop) {
+    display: flex;
     padding: 50px 62px 40px;
   }
 }
@@ -106,7 +104,7 @@
 .modal-movie-poster {
   margin-right: auto;
   margin-left: auto;
-  display: inline-block;
+  // display: inline-block;
   border-radius: 5px;
 
   @include mq(mobile) {
@@ -132,7 +130,6 @@
   @include mq(mobile) {
     width: 240px;
     height: 356px;
-    // padding: 0px 20px 0px 20px;
   }
 
   @include mq(tablet) {

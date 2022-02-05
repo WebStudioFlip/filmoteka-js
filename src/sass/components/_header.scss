@@ -44,7 +44,7 @@
   width: 100%;
 
   color: var(--primary-text-color);
-  text-indent: 5px;
+  text-indent: 1px;
   border-bottom: 1px solid var(--primary-text-color);
   transition: border-width 250ms cubic-bezier(0.4, 0, 0.2, 1),
     border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -102,6 +102,10 @@
   font-size: 14px;
   line-height: 1.14;
   opacity: 1;
+}
+
+.input-box:focus::placeholder {
+  opacity: 0.5;
 }
 
 .home-menu {
@@ -281,4 +285,19 @@
   box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
   transition: 500ms cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
+}
+
+.header-container {
+  position: relative;
+}
+.search-error-text {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 155px;
+  left: 50%;
+  color: var(--search-error-text);
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.14;
+  width: 100%;
 }
