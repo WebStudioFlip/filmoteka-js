@@ -7,10 +7,14 @@ const modalCloseBtn = document.querySelector('.modal-btn-close');
 const backdropEl = document.querySelector('.backdrop');
 const movieGalleryEl = document.querySelector('.gallery');
 const scrollUpBtn = document.querySelector('button.btn-back-to-top');
+const myButtonWatchEl = document.querySelector('.btn-watch');
+const mybuttonQueueEl = document.querySelector('.btn-queue');
 
 movieGalleryEl.addEventListener('click', onClickGallery);
 modalCloseBtn.addEventListener('click', onCloseBtn);
 backdropEl.addEventListener('click', closeBackdrop);
+myButtonWatchEl.addEventListener('click', buttonWatchClick);
+mybuttonQueueEl.addEventListener('click', buttonQueueClick);
 
 function onClickGallery(event) {
   event.preventDefault();
@@ -25,9 +29,9 @@ function onClickGallery(event) {
     return;
   } else {
     backdropEl.classList.remove('is-hidden');
-    document.body.classList.add("overflow-hidden");
+    document.body.classList.add('overflow-hidden');
     document.body.style.overflow = 'hidden';
-    scrollUpBtn.classList.add("btn-position");
+    scrollUpBtn.classList.add('btn-position');
 
     const movieId = event.target.closest('.film-card').dataset.filmId;
 
@@ -46,9 +50,9 @@ function onClickGallery(event) {
 
 function onCloseBtn() {
   backdropEl.classList.add('is-hidden');
-  document.body.classList.remove("overflow-hidden");
+  document.body.classList.remove('overflow-hidden');
   document.body.style.overflow = 'visible';
-  scrollUpBtn.classList.remove("btn-position");
+  scrollUpBtn.classList.remove('btn-position');
 
   window.removeEventListener('keydown', closeModalHandler);
 }
@@ -64,3 +68,15 @@ function closeBackdrop(event) {
     onCloseBtn();
   }
 }
+
+function buttonWatchClick() {
+  myButtonWatchEl.classList.add('is-active');
+  mybuttonQueueEl.classList.remove('is-active');
+}
+
+function buttonQueueClick() {
+  mybuttonQueueEl.classList.add('is-active');
+  myButtonWatchEl.classList.remove('is-active');
+}
+
+console.dir(myButtonWatchEl);

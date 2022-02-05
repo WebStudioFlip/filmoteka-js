@@ -67,6 +67,7 @@
     width: 30px;
     height: 30px;
     z-index: 10;
+    margin-top: 10px;
     cursor: pointer;
   }
 
@@ -230,18 +231,22 @@
   line-height: 1.2;
   margin-bottom: 21px;
   text-align: left;
-  margin-right: 5px;
 }
 
 .film-button-wrapper {
   display: flex;
-  align-items: stretch;
+  align-items: center;
+  text-align: center;
 
   @include mq(mobile) {
     padding-bottom: 40px;
   }
 
   @include mq(tablet) {
+    padding-bottom: 30px;
+  }
+
+  @include mq(desktop) {
     padding-bottom: 0px;
   }
 }
@@ -251,34 +256,72 @@
   font-weight: 500;
   font-size: 12px;
   line-height: 1.2;
-  margin-right: 5px;
-
-  width: 112px;
-  height: 44px;
-  text-align: center;
-  text-transform: uppercase;
   border-radius: 5px;
-  background-color: var(--primary-text-color);
+  text-transform: uppercase;
+  background-color: transparent;
   cursor: pointer;
-  border: 1px solid var(--secondary-text-color);
-  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  &:hover,
-  &:focus {
-    background-color: var(--focus-color);
-    color: var(--primary-text-color);
-    border: 1px solid var(--focus-color);
-  }
-  @include mq(mobile) {
-    width: 113px;
-  }
-  @include mq(tablet) {
-    width: 125px;
-  }
-  @include mq(desktop) {
-    width: 136px;
-  }
 }
 
 .film-button:first-child {
   margin-right: 15px;
+}
+
+.btn-watch {
+  color: var(--secondary-text-color);
+  padding: 8px 9px 12px;
+  height: 44px;
+  width: 113px;
+  // background-color: var(--focus-color);
+  // border: var(--focus-color);
+  border: 1px solid var(--secondary-text-color);
+
+  @include mq(tablet) {
+    width: 126px;
+    padding: 16px 10px 12px;
+  }
+  @include mq(desktop) {
+    width: 136px;
+    padding: 15px 17px 12px;
+  }
+}
+
+.btn-queue {
+  color: var(--secondary-text-color);
+  padding: 14px 12px 12px;
+  height: 44px;
+  width: 113px;
+  background-color: var(--primary-text-color);
+  border: 1px solid var(--secondary-text-color);
+
+  @include mq(tablet) {
+    width: 126px;
+    padding: 14px 17px 12px;
+  }
+  @include mq(desktop) {
+    width: 136px;
+    padding: 14px 25px 12px;
+  }
+}
+
+// .btn-watch.is-active,
+.btn-queue.is-active {
+  background-color: var(--focus-color);
+  border: var(--focus-color);
+  transition: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-watch:focus,
+.btn-queue:focus {
+  color: var(--primary-text-color);
+  background-color: var(--focus-color);
+  border-color: var(--focus-color);
+  transition: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-watch:hover,
+.btn-queue:hover {
+  color: var(--primary-text-color);
+  background-color: var(--focus-color);
+  border-color: var(--focus-color);
+  transition: 500ms cubic-bezier(0.4, 0, 0.2, 1);
 }
