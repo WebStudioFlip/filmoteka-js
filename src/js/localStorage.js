@@ -2,7 +2,7 @@
 
 import { searchFilmsCompletes } from './themoviedbAPI';
 import libraryCardTemplate from '../templates/library-gallery-elements.hbs';
-
+import { AddedToLocalStorage } from './localStorageCheckContent.js';
 export function AddToWatched() {
   const btnWatchedEl = document.querySelector('.btn-watch');
   const modalWindowEl = document.querySelector('.movie-modal-card');
