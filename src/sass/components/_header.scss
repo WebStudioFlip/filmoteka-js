@@ -3,24 +3,32 @@
     url(../images/bg-header-home.jpg);
   background-size: contain;
   width: 100%;
-  padding-bottom: 97px;
-  padding-top: 41px;
-
   background-size: auto;
+  background-repeat: no-repeat;
 
-  @include mq(tablet) {
-    padding-top: 41px;
+  @include mq(tablet) {    
     background-size: cover;
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
       url(../images/header-bg-tablet.jpg);
   }
-  @include mq(desktop) {
-    padding-top: 41px;
-    background-size: cover;
+  @include mq(desktop) {       
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
       url(../images/bg-header-home.jpg);
   }
 }
+
+.header-container {
+  position: relative;
+  padding-bottom: 97px;
+  padding-top: 41px;
+  padding-left: 20px;
+  padding-right: 20px;
+  @include mq(tablet) {
+    padding-left: 60px;
+    padding-right: 60px;
+   }
+}
+
 .search-form-block {
   max-width: 280px;
   margin: auto;
@@ -298,9 +306,6 @@
   cursor: pointer;
 }
 
-.header-container {
-  position: relative;
-}
 .search-error-text {
   position: absolute;
   transform: translate(-50%, -50%);

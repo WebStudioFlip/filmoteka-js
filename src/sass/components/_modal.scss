@@ -31,7 +31,7 @@
   background-color: var(--primary-text-color);
   z-index: 1000;
   max-height: 100vh;
-  width: 280px;
+  min-width: 280px;
   box-sizing: border-box;
   overflow: auto;
   border-radius: 5px;
@@ -40,12 +40,11 @@
 
   @include mq(tablet) {
     margin: auto;
-    width: 618px;
+    min-width: 618px;
   }
 
   @include mq(desktop) {
-    width: 882px;
-    left: 49.5%;
+    min-width: 882px;    
   }
 
   &-btn-close {
@@ -55,19 +54,16 @@
     stroke: var(--secondary-text-color);
     border: none;
     cursor: pointer;
-    background-color: var(--primary-text-color);
+    background-color: transparent;
   }
 
   &-btn-icon {
     display: flex;
     align-items: center;
-    justify-content: center;
-    top: 10px;
-    right: 10px;
+    justify-content: center;    
     width: 30px;
     height: 30px;
-    z-index: 10;
-    margin-top: 10px;
+    z-index: 10;    
     cursor: pointer;
   }
 
@@ -78,54 +74,42 @@
 }
 
 .modal-card-container {
-  padding: 48px 20px 41px 20px;
+  padding: 50px 20px;
 
   @include mq(tablet) {
     display: flex;
-    padding: 42px 29px 40px 28px;
+    padding: 40px 30px 40px;
   }
 
   @include mq(desktop) {
     display: flex;
-    padding: 50px 62px 40px;
+    padding: 50px 30px 40px;
   }
 }
 
 .movie-modal-card {
   border-radius: 5px;
+  width: 240px;
+  height: 356px;
+  margin-bottom: 30px;  
 
-  @include mq(tablet) {
-    display: flex;
-  }
-
-  @include mq(desktop) {
-    display: flex;
-  }
+@include mq(tablet) {  
+  width: 265px;
+  height: 375px;
+  margin: 0px 30px 0px 0px;
 }
 
-.modal-movie-poster {
-  margin-right: auto;
-  margin-left: auto;
+@include mq(desktop) {
+  width: 400px;
+  height: 480px;
+  margin: 0px 30px 0px 0px;
+}
+}
+
+.modal-movie-poster {  
   // display: inline-block;
-  border-radius: 5px;
-
-  @include mq(mobile) {
-    width: 240px;
-    height: 356px;
-    margin-bottom: 30px;
-  }
-
-  @include mq(tablet) {
-    width: 264px;
-    height: 374px;
-    margin: 0px 30px 0px 0px;
-  }
-
-  @include mq(desktop) {
-    width: 300px;
-    height: 450px;
-    margin: 0px 30px 0px 0px;
-  }
+  border-radius: 5px;  
+    
 }
 
 .film-information {
@@ -153,14 +137,8 @@
   font-weight: 500;
   margin-bottom: 20px;
   text-transform: uppercase;
-  @include mq(mobile) {
     font-size: 20px;
-    line-height: 1.15;
-  }
-  @include mq(tablet) {
-    font-size: 20px;
-    line-height: 1.15;
-  }
+    line-height: 1.15;  
   @include mq(desktop) {
     font-size: 30px;
     line-height: 1.17;
