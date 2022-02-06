@@ -7,14 +7,10 @@ const modalCloseBtn = document.querySelector('.modal-btn-close');
 const backdropEl = document.querySelector('.backdrop');
 const movieGalleryEl = document.querySelector('.gallery');
 const scrollUpBtn = document.querySelector('button.btn-back-to-top');
-const myButtonWatchEl = document.querySelector('.btn-watch');
-const mybuttonQueueEl = document.querySelector('.btn-queue');
 
 movieGalleryEl.addEventListener('click', onClickGallery);
 modalCloseBtn.addEventListener('click', onCloseBtn);
 backdropEl.addEventListener('click', closeBackdrop);
-myButtonWatchEl.addEventListener('click', buttonWatchClick);
-mybuttonQueueEl.addEventListener('click', buttonQueueClick);
 
 function onClickGallery(event) {
   event.preventDefault();
@@ -68,15 +64,3 @@ function closeBackdrop(event) {
     onCloseBtn();
   }
 }
-
-function buttonWatchClick() {
-  myButtonWatchEl.classList.add('is-active');
-  mybuttonQueueEl.classList.remove('is-active');
-}
-
-function buttonQueueClick() {
-  mybuttonQueueEl.classList.add('is-active');
-  myButtonWatchEl.classList.remove('is-active');
-}
-
-console.dir(myButtonWatchEl);

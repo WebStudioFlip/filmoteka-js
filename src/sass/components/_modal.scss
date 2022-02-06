@@ -266,7 +266,7 @@
   margin-right: 15px;
 }
 
-.btn-watch {
+.btn-watched {
   color: var(--secondary-text-color);
   padding: 8px 9px 12px;
   height: 44px;
@@ -281,7 +281,7 @@
   }
   @include mq(desktop) {
     width: 136px;
-    padding: 15px 17px 12px;
+    padding: 15px 16px 12px;
   }
 }
 
@@ -290,7 +290,7 @@
   padding: 14px 12px 12px;
   height: 44px;
   width: 113px;
-  background-color: var(--primary-text-color);
+  // background-color: var(--primary-text-color);
   border: 1px solid var(--secondary-text-color);
 
   @include mq(tablet) {
@@ -303,14 +303,14 @@
   }
 }
 
-// .btn-watch.is-active,
+// .btn-watched.is-active,
 .btn-queue.is-active {
   background-color: var(--focus-color);
   border: var(--focus-color);
   transition: 500ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.btn-watch:focus,
+.btn-watched:focus,
 .btn-queue:focus {
   color: var(--primary-text-color);
   background-color: var(--focus-color);
@@ -318,7 +318,7 @@
   transition: 500ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.btn-watch:hover,
+.btn-watched:hover,
 .btn-queue:hover {
   color: var(--primary-text-color);
   background-color: var(--focus-color);
