@@ -85,3 +85,7 @@ export function searchFilmsCompletes(movieId) {
     return response.json();
   });
 }
+
+function fetchAPI (url) {
+  
+}
