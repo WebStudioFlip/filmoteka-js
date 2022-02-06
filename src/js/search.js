@@ -50,7 +50,7 @@ function onFormSubmit (event) {
       return;
     }  
     
-    theMoviebdhAPI.searchFilms().then(data => {
+    theMoviebdhAPI.searchFilms().then((data={results:[]}) => {
         console.log(data)
       if (!data.results.length) {
         errorText.innerHTML = 'Search result not successful. Enter the correct movie name and';

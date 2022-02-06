@@ -26,11 +26,15 @@
         {{/unless}}
         <div class="film-card__info-wrapper">
           <ul class="film-card__ganres">
+            {{#if genre_ids}}
             {{#each genre_ids}}
-            <li class="film-card__ganre">&nbsp{{this}}</li>
+             <li class="film-card__ganre"><a href="" class="film-card__text">{{this}}{{#unless @last}}, &nbsp{{/unless}}</a></li>
             {{/each}}
+            {{else}} <li class="film-card__ganre film-card__text">N/A</li>
+            {{/if}}
           </ul>
-          <p class="film-card__year">{{release_date}}</p>
+           <p class="film-card__year">
+            <span>{{release_date}}</span>
         </div>
       </div>        
     </div>

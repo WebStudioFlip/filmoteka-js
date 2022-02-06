@@ -4,6 +4,8 @@
 @import './utils/comon-styles';
 // Импорт переменных
 @import './utils/variables';
+// Импорт для спинера загрузки
+@import './components/loading';
 // Импорт стилей хедера
 @import './components/header';
 // стили главной секции
@@ -16,3 +18,5 @@
 @import './components/scrollUpBtn';
 // Импорт стилей модального окна
 @import './components/modal';
+// Импорт стилей пагінації
+@import './components/pagination';
