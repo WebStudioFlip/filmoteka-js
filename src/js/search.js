@@ -53,7 +53,7 @@ function onPaginationFavoriteClick(event) {
   });
 }
 
-theMoviebdhAPI
+setTimeout(theMoviebdhAPI
   .getFavoriteFilms()
   .then(data => {
     console.log(data)
@@ -62,7 +62,8 @@ theMoviebdhAPI
     } else {
       container.innerHTML = '';
     }
-    galleryListEl.insertAdjacentHTML('beforeend', galleryCardsTemplate(data.results))});
+    galleryListEl.insertAdjacentHTML('beforeend', galleryCardsTemplate(data.results))}), 100)
+
 
 function onFormSubmit(event) {
   event.preventDefault();
