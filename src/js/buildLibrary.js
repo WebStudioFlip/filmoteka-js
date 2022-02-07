@@ -79,7 +79,7 @@ function onClickGallery(event) {
         AddToWatched();
         AddToQueue();
       })
-      .catch(console.log);
+      .catch(err => console.log(err));
 
     window.addEventListener('keydown', closeModalHandler);
   }
@@ -123,7 +123,6 @@ function onPaginationClick (event) {
     theMoviebdhAPI.watched = JSON.parse(localStorage.getItem('myLib'));
     theMoviebdhAPI.queue = JSON.parse(localStorage.getItem('queue'));   
     libraryListEl.innerHTML = '';        
-    console.log(theMoviebdhAPI[theMoviebdhAPI.selected].slice((theMoviebdhAPI.page-1)*20,(theMoviebdhAPI.page*20+1)))
       libraryListEl.insertAdjacentHTML('beforeend', libraryCardTemplate(theMoviebdhAPI[theMoviebdhAPI.selected].slice((theMoviebdhAPI.page-1)*20,(theMoviebdhAPI.page*20+1))));
  }
 
@@ -140,7 +139,6 @@ function onPaginationClick (event) {
       theMoviebdhAPI.searchFilmsCompletes(Number(modalWindowEl.dataset.filmId)).then(response => {        
         if (localStorage.hasOwnProperty('myLib')) {
           let myLibArr = JSON.parse(localStorage.getItem('myLib'));
-          console.log(myLibArr)
           let myQueueArr = [];
          if(localStorage.hasOwnProperty('queue')) {myQueueArr = JSON.parse(localStorage.getItem('queue'));} 
           if (myLibArr.some(el => el.id === response.id)) {

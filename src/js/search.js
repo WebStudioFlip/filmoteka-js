@@ -51,7 +51,6 @@ theMoviebdhAPI
 function onFormSubmit(event) {
   event.preventDefault();
   theMoviebdhAPI.keyword = searchField.value;
-
   if (!theMoviebdhAPI.keyword.length) {
     theMoviebdhAPI.getFavoriteFilms().then(data => {
       galleryListEl.innerHTML = '';
@@ -146,7 +145,6 @@ export function AddToWatched() {
     theMoviebdhAPI.searchFilmsCompletes(Number(modalWindowEl.dataset.filmId)).then(response => {
       if (localStorage.hasOwnProperty('myLib')) {
         let myLibArr = JSON.parse(localStorage.getItem('myLib'));
-        console.log(myLibArr);
         let myQueueArr = [];
         if (localStorage.hasOwnProperty('queue')) {
           myQueueArr = JSON.parse(localStorage.getItem('queue'));

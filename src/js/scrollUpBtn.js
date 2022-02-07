@@ -7,7 +7,6 @@ let mybutton = document.querySelector("button.btn-back-to-top");
 window.onscroll = throttle(scrollFunction,300)
 
 function scrollFunction() {
-  console.log(10)
   if (
     document.body.scrollTop > 20 ||
     document.documentElement.scrollTop > 20
