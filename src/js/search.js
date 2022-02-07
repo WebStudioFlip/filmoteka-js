@@ -182,6 +182,7 @@ export function AddToWatched() {
             );
             localStorage.setItem('queue', JSON.stringify(myQueueArr));
             btnQueueEl.textContent = 'ADD TO QUEUE';
+            console.log(localStorage)
           }
         }
       }
@@ -204,6 +205,7 @@ export function AddToQueue() {
   }
 
   btnQueueEl.addEventListener('click', event => {
+    console.log(localStorage)
     theMoviebdhAPI.searchFilmsCompletes(Number(modalWindowEl.dataset.filmId)).then(response => {
       if (localStorage.hasOwnProperty('queue')) {
         let myLibArr = [];
@@ -244,6 +246,7 @@ export function AddToQueue() {
             );
             localStorage.setItem('myLib', JSON.stringify(myLibArr));
             btnWatchedEl.textContent = 'ADD TO WATCHED';
+            console.log(localStorage)
           }
         }
       }
