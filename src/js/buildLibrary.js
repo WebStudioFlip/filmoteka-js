@@ -126,79 +126,124 @@ function onPaginationClick (event) {
       libraryListEl.insertAdjacentHTML('beforeend', libraryCardTemplate(theMoviebdhAPI[theMoviebdhAPI.selected].slice((theMoviebdhAPI.page-1)*20,(theMoviebdhAPI.page*20+1))));
  }
 
-  export function AddToWatched() {
-    const modalWindowEl = document.querySelector('.movie-modal-card');
-    const btnWatchedEl = document.querySelector('.btn-watched');
-    const btnQueueEl = document.querySelector('.btn-queue');
-    if (localStorage.hasOwnProperty('myLib')) {
+ export function AddToWatched() {
+  const modalWindowEl = document.querySelector('.movie-modal-card');
+  const btnWatchedEl = document.querySelector('.btn-watched');
+  const btnQueueEl = document.querySelector('.btn-queue');
+  if (localStorage.hasOwnProperty('myLib')) {
+    let myLibArr = JSON.parse(localStorage.getItem('myLib'));
+    if (myLibArr.some(el => el.id === Number(modalWindowEl.dataset.filmId))) {
+      btnWatchedEl.textContent = 'DEL FROM WATCHED';
+    } else {
+      btnWatchedEl.textContent = 'ADD TO WATCHED';
+    }
+  }
+  btnWatchedEl.addEventListener('click', event => {
+    theMoviebdhAPI.searchFilmsCompletes(Number(modalWindowEl.dataset.filmId)).then(response => {
+      if (localStorage.hasOwnProperty('myLib')) {
         let myLibArr = JSON.parse(localStorage.getItem('myLib'));
-        if (myLibArr.some(el => el.id === Number(modalWindowEl.dataset.filmId))) { btnWatchedEl.textContent = "DEL FROM WATCHED";} 
-        else { btnWatchedEl.textContent = "ADD TO WATCHED";}
-    }
-    btnWatchedEl.addEventListener('click', event => {         
-      theMoviebdhAPI.searchFilmsCompletes(Number(modalWindowEl.dataset.filmId)).then(response => {        
-        if (localStorage.hasOwnProperty('myLib')) {
-          let myLibArr = JSON.parse(localStorage.getItem('myLib'));
-          let myQueueArr = [];
-         if(localStorage.hasOwnProperty('queue')) {myQueueArr = JSON.parse(localStorage.getItem('queue'));} 
-          if (myLibArr.some(el => el.id === response.id)) {
-            myLibArr.splice(myLibArr.findIndex(el => el.id === response.id),1);
-            localStorage.setItem('myLib', JSON.stringify(myLibArr));
-            btnWatchedEl.textContent = "ADD TO WATCHED";                       
-            return;
-          } else {
-            myLibArr.push(response);
-            localStorage.setItem('myLib', JSON.stringify(myLibArr));
-            btnWatchedEl.textContent = "DEL FROM WATCHED"
-            if (myQueueArr.find(el => el.id === response.id)) {
-                myQueueArr.splice(myQueueArr.findIndex(el => el.id === response.id),1);
-                localStorage.setItem('queue', JSON.stringify(myQueueArr));
-                btnQueueEl.textContent = "ADD TO QUEUE";    
-            }
-          }
-        } else {
-          localStorage.setItem('myLib', JSON.stringify([response]));
-        }
-      });
-    });
-  }
-  
-  export function AddToQueue() {
-    const modalWindowEl = document.querySelector('.movie-modal-card');
-    const btnQueueEl = document.querySelector('.btn-queue');
-    const btnWatchedEl = document.querySelector('.btn-watched');
-
-    if (localStorage.hasOwnProperty('queue')) {
-        let myQueueArr = JSON.parse(localStorage.getItem('queue'));
-        if (myQueueArr.some(el => el.id === Number(modalWindowEl.dataset.filmId))) { btnQueueEl.textContent = "DEL FROM QUEUE";} 
-        else { btnQueueEl.textContent = "ADD TO QUEUE";}
-    }
-
-    btnQueueEl.addEventListener('click', event => {
-        theMoviebdhAPI.searchFilmsCompletes(Number(modalWindowEl.dataset.filmId)).then(response => {
+        let myQueueArr = [];
         if (localStorage.hasOwnProperty('queue')) {
-            let myLibArr = [];
-          let myQueueArr = JSON.parse(localStorage.getItem('queue'));
-          if(localStorage.hasOwnProperty('myLib')) {myLibArr = JSON.parse(localStorage.getItem('myLib'));}
-          if (myQueueArr.some(el => el.id === response.id)) {
-            myQueueArr.splice(myQueueArr.findIndex(el => el.id === response.id),1);
-            localStorage.setItem('queue', JSON.stringify(myQueueArr));
-            btnQueueEl.textContent = "ADD TO QUEUE";   
-            return;
-          } else {
-            myQueueArr.push(response);
-            localStorage.setItem('queue', JSON.stringify(myQueueArr));
-            btnQueueEl.textContent = "DEL FROM QUEUE"; 
-            if (myLibArr.some(el => el.id === response.id)) {
-                myLibArr.splice(myLibArr.findIndex(el => el.id === response.id),1);
-                localStorage.setItem('myLib', JSON.stringify(myLibArr));
-                btnWatchedEl.textContent = "ADD TO WATCHED";
-            }
-          }
-        } else {
-          localStorage.setItem('queue', JSON.stringify([response]));
+          myQueueArr = JSON.parse(localStorage.getItem('queue'));
         }
-      });
+        if (myLibArr.some(el => el.id === response.id)) {
+          myLibArr.splice(
+            myLibArr.findIndex(el => el.id === response.id),
+            1,
+          );
+          localStorage.setItem('myLib', JSON.stringify(myLibArr));
+          btnWatchedEl.textContent = 'ADD TO WATCHED';
+          return;
+        } else {
+          myLibArr.push(response);
+          localStorage.setItem('myLib', JSON.stringify(myLibArr));
+          btnWatchedEl.textContent = 'DEL FROM WATCHED';
+          if (myQueueArr.find(el => el.id === response.id)) {
+            myQueueArr.splice(
+              myQueueArr.findIndex(el => el.id === response.id),
+              1,
+            );
+            localStorage.setItem('queue', JSON.stringify(myQueueArr));
+            btnQueueEl.textContent = 'ADD TO QUEUE';
+          }
+        }
+      } else {
+        localStorage.setItem('myLib', JSON.stringify([response]));
+        btnWatchedEl.textContent = 'DEL FROM WATCHED';
+        if (localStorage.hasOwnProperty('queue')) {
+          myQueueArr = JSON.parse(localStorage.getItem('queue'));
+          if (myQueueArr.find(el => el.id === response.id)) {
+            myQueueArr.splice(
+              myQueueArr.findIndex(el => el.id === response.id),
+              1,
+            );
+            localStorage.setItem('queue', JSON.stringify(myQueueArr));
+            btnQueueEl.textContent = 'ADD TO QUEUE';
+          }
+        }
+      }
     });
+  });
+}
+
+export function AddToQueue() {
+  const modalWindowEl = document.querySelector('.movie-modal-card');
+  const btnQueueEl = document.querySelector('.btn-queue');
+  const btnWatchedEl = document.querySelector('.btn-watched');
+
+  if (localStorage.hasOwnProperty('queue')) {
+    let myQueueArr = JSON.parse(localStorage.getItem('queue'));
+    if (myQueueArr.some(el => el.id === Number(modalWindowEl.dataset.filmId))) {
+      btnQueueEl.textContent = 'DEL FROM QUEUE';
+    } else {
+      btnQueueEl.textContent = 'ADD TO QUEUE';
+    }
   }
-  
+
+  btnQueueEl.addEventListener('click', event => {
+    theMoviebdhAPI.searchFilmsCompletes(Number(modalWindowEl.dataset.filmId)).then(response => {
+      if (localStorage.hasOwnProperty('queue')) {
+        let myLibArr = [];
+        let myQueueArr = JSON.parse(localStorage.getItem('queue'));
+        if (localStorage.hasOwnProperty('myLib')) {
+          myLibArr = JSON.parse(localStorage.getItem('myLib'));
+        }
+        if (myQueueArr.some(el => el.id === response.id)) {
+          myQueueArr.splice(
+            myQueueArr.findIndex(el => el.id === response.id),
+            1,
+          );
+          localStorage.setItem('queue', JSON.stringify(myQueueArr));
+          btnQueueEl.textContent = 'ADD TO QUEUE';
+          return;
+        } else {
+          myQueueArr.push(response);
+          localStorage.setItem('queue', JSON.stringify(myQueueArr));
+          btnQueueEl.textContent = 'DEL FROM QUEUE';
+          if (myLibArr.some(el => el.id === response.id)) {
+            myLibArr.splice(
+              myLibArr.findIndex(el => el.id === response.id),
+              1,
+            );
+            localStorage.setItem('myLib', JSON.stringify(myLibArr));
+            btnWatchedEl.textContent = 'ADD TO WATCHED';
+          }
+        }
+      } else {
+        localStorage.setItem('queue', JSON.stringify([response]));
+        btnQueueEl.textContent = 'DEL FROM QUEUE';        
+        if (localStorage.hasOwnProperty('myLib')) {
+          myLibArr = JSON.parse(localStorage.getItem('myLib'));
+          if (myLibArr.some(el => el.id === response.id)) {
+            myLibArr.splice(
+              myLibArr.findIndex(el => el.id === response.id),
+              1,
+            );
+            localStorage.setItem('myLib', JSON.stringify(myLibArr));
+            btnWatchedEl.textContent = 'ADD TO WATCHED';
+          }
+        }
+      }
+    });
+  });
+}
