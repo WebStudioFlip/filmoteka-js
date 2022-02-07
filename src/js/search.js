@@ -23,7 +23,7 @@ backdropEl.addEventListener('click', closeBackdrop);
 
 const theMoviebdhAPI = new TheMoviebdhAPI();
 //localStorage.clear()
-function creatPagination(totalItems) {
+function creatPagination(totalItems, onClick) {
   const optionsPagination = {
     totalItems: totalItems,
     itemsPerPage: 20,
@@ -32,10 +32,10 @@ function creatPagination(totalItems) {
     centerAlign: false,
   };
   const pagination = new Pagination(container, optionsPagination);
-  pagination.on('beforeMove', onPaginationClick);
+  pagination.on('beforeMove',onClick );
 }
 
-function onPaginationClick(event) {
+function onPaginationSearchClick(event) {
   theMoviebdhAPI.page = event.page;
   theMoviebdhAPI.searchFilms().then(data => {
     galleryListEl.innerHTML = '';
@@ -44,9 +44,25 @@ function onPaginationClick(event) {
   });
 }
 
+function onPaginationFavoriteClick(event) {
+  theMoviebdhAPI.page = event.page;
+  theMoviebdhAPI.getFavoriteFilms().then(data => {
+    galleryListEl.innerHTML = '';
+    errorText.innerHTML = '';
+    galleryListEl.insertAdjacentHTML('beforeend', galleryCardsTemplate(data.results));
+  });
+}
+
 theMoviebdhAPI
   .getFavoriteFilms()
-  .then(data => galleryListEl.insertAdjacentHTML('beforeend', galleryCardsTemplate(data)));
+  .then(data => {
+    console.log(data)
+    if (data.total_results > 20) {
+      creatPagination(data.total_results, onPaginationFavoriteClick);
+    } else {
+      container.innerHTML = '';
+    }
+    galleryListEl.insertAdjacentHTML('beforeend', galleryCardsTemplate(data.results))});
 
 function onFormSubmit(event) {
   event.preventDefault();
@@ -69,7 +85,7 @@ function onFormSubmit(event) {
       return;
     }
     if (data.total_results > 20) {
-      creatPagination(data.total_results);
+      creatPagination(data.total_results, onPaginationSearchClick);
     } else {
       container.innerHTML = '';
     }

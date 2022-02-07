@@ -31,7 +31,8 @@
   background-color: var(--primary-text-color);
   z-index: 1000;
   max-height: 100vh;
-  min-width: 280px;
+  width: calc(100vw - 40px); 
+  max-width: 480px;
   box-sizing: border-box;
   overflow: auto;
   border-radius: 5px;
@@ -40,11 +41,12 @@
 
   @include mq(tablet) {
     margin: auto;
-    min-width: 618px;
+    width: calc(100vw - 140px);
+    max-width: 670px;
   }
 
   @include mq(desktop) {
-    min-width: 882px;    
+    max-width: 1200px;    
   }
 
   &-btn-close {
@@ -88,27 +90,33 @@
 }
 
 .movie-modal-card {
-  border-radius: 5px;
-  min-width: 240px;
-  height: 356px;
+  border-radius: 5px;  
+  height: auto;
   margin-bottom: 30px;  
 
 @include mq(tablet) {  
-  min-width: 265px;
-  height: 375px;
-  margin: 0px 30px 0px 0px;
+  min-width: 265px;    
+  margin-right: 30px;
 }
 
 @include mq(desktop) {
-  min-width: 400px;
-  height: 480px;
-  margin: 0px 30px 0px 0px;
+  min-width: 400px;    
 }
 }
 
 .modal-movie-poster {  
   // display: inline-block;
   border-radius: 5px;  
+  margin: auto;
+  max-width: 240px; 
+  @include mq(tablet) {  
+    max-width: 265px;    
+   
+  }
+  
+  @include mq(desktop) {
+    max-width: 400px;    
+  }
     
 }
 
@@ -212,20 +220,10 @@
 
 .film-button-wrapper {
   display: flex;
+  justify-content: space-evenly;
   align-items: center;
   text-align: center;
-
-  @include mq(mobile) {
-    padding-bottom: 40px;
-  }
-
-  @include mq(tablet) {
-    padding-bottom: 30px;
-  }
-
-  @include mq(desktop) {
-    padding-bottom: 0px;
-  }
+  flex-wrap: wrap;
 }
 
 .film-button {
@@ -241,42 +239,40 @@
 
 .film-button:first-child {
   margin-right: 15px;
+  margin-bottom: 10px;
 }
 
 .btn-watched {
   color: var(--secondary-text-color);
-  padding: 8px 9px 12px;
+  padding-left: 12px ;
+  padding-right:  12px;
   height: 44px;
-  min-width: 113px;
-  // background-color: var(--focus-color);
-  // border: var(--focus-color);
+  min-width: 113px;  
   border: 1px solid var(--secondary-text-color);
 
   @include mq(tablet) {
-    min-width: 145px;
-    padding: 16px 10px 12px;
+    min-width: 145px;   
   }
   @include mq(desktop) {
-    min-width: 136px;
-    padding: 15px 16px 12px;
+    min-width: 136px;    
   }
 }
 
 .btn-queue {
   color: var(--secondary-text-color);
-  padding: 14px 12px 12px;
+  padding-left: 12px ;
+  padding-right:  12px;
+  margin-bottom: 10px;
   height: 44px;
-  min-width: 113px;
-  // background-color: var(--primary-text-color);
+  min-width: 113px;  
   border: 1px solid var(--secondary-text-color);
 
   @include mq(tablet) {
     min-width: 145px;
-    padding: 14px 17px 12px;
+    
   }
   @include mq(desktop) {
-    min-width: 136px;
-    padding: 14px 25px 12px;
+    min-width: 136px;    
   }
 }
 

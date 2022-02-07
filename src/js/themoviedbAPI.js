@@ -15,7 +15,7 @@ export class TheMoviebdhAPI {
   }
 
   getFavoriteFilms() {   
-    return fetch(`${this.#BASE_URL}/trending/movie/week?api_key=${this.#API_KEY}`).then(
+    return fetch(`${this.#BASE_URL}/trending/movie/week?api_key=${this.#API_KEY}&page=${this.page}`).then(
       response => {
         if (!response.ok) {
           throw new Error(response.status);
@@ -31,7 +31,7 @@ export class TheMoviebdhAPI {
                 result.results[index].release_date,
               );
             }           
-            return result.results;
+            return result;
           })
           .catch(err => {
             console.log(err)});
