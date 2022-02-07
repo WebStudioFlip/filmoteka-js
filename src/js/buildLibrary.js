@@ -171,7 +171,7 @@ function onPaginationClick (event) {
         localStorage.setItem('myLib', JSON.stringify([response]));
         btnWatchedEl.textContent = 'DEL FROM WATCHED';
         if (localStorage.hasOwnProperty('queue')) {
-          myQueueArr = JSON.parse(localStorage.getItem('queue'));
+         let myQueueArr = JSON.parse(localStorage.getItem('queue'));
           if (myQueueArr.find(el => el.id === response.id)) {
             myQueueArr.splice(
               myQueueArr.findIndex(el => el.id === response.id),
@@ -179,6 +179,7 @@ function onPaginationClick (event) {
             );
             localStorage.setItem('queue', JSON.stringify(myQueueArr));
             btnQueueEl.textContent = 'ADD TO QUEUE';
+            console.log(localStorage)
           }
         }
       }
@@ -201,6 +202,7 @@ export function AddToQueue() {
   }
 
   btnQueueEl.addEventListener('click', event => {
+    console.log(localStorage)
     theMoviebdhAPI.searchFilmsCompletes(Number(modalWindowEl.dataset.filmId)).then(response => {
       if (localStorage.hasOwnProperty('queue')) {
         let myLibArr = [];
@@ -233,7 +235,7 @@ export function AddToQueue() {
         localStorage.setItem('queue', JSON.stringify([response]));
         btnQueueEl.textContent = 'DEL FROM QUEUE';        
         if (localStorage.hasOwnProperty('myLib')) {
-          myLibArr = JSON.parse(localStorage.getItem('myLib'));
+         let myLibArr = JSON.parse(localStorage.getItem('myLib'));
           if (myLibArr.some(el => el.id === response.id)) {
             myLibArr.splice(
               myLibArr.findIndex(el => el.id === response.id),
@@ -241,9 +243,11 @@ export function AddToQueue() {
             );
             localStorage.setItem('myLib', JSON.stringify(myLibArr));
             btnWatchedEl.textContent = 'ADD TO WATCHED';
+            console.log(localStorage)
           }
         }
       }
     });
   });
 }
+

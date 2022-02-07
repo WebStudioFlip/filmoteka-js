@@ -174,7 +174,7 @@ export function AddToWatched() {
         localStorage.setItem('myLib', JSON.stringify([response]));
         btnWatchedEl.textContent = 'DEL FROM WATCHED';
         if (localStorage.hasOwnProperty('queue')) {
-          myQueueArr = JSON.parse(localStorage.getItem('queue'));
+         let myQueueArr = JSON.parse(localStorage.getItem('queue'));
           if (myQueueArr.find(el => el.id === response.id)) {
             myQueueArr.splice(
               myQueueArr.findIndex(el => el.id === response.id),
@@ -238,7 +238,7 @@ export function AddToQueue() {
         localStorage.setItem('queue', JSON.stringify([response]));
         btnQueueEl.textContent = 'DEL FROM QUEUE';        
         if (localStorage.hasOwnProperty('myLib')) {
-          myLibArr = JSON.parse(localStorage.getItem('myLib'));
+         let myLibArr = JSON.parse(localStorage.getItem('myLib'));
           if (myLibArr.some(el => el.id === response.id)) {
             myLibArr.splice(
               myLibArr.findIndex(el => el.id === response.id),
