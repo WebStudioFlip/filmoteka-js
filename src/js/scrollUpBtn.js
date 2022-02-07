@@ -1,12 +1,13 @@
+import throttle from 'lodash.throttle'
+
 //Get the button
 let mybutton = document.querySelector("button.btn-back-to-top");
 
 // When the user scrolls down 20px from the top of the document, show the button
-window.onscroll = function () {
-  scrollFunction();
-};
+window.onscroll = throttle(scrollFunction,300)
 
 function scrollFunction() {
+  console.log(10)
   if (
     document.body.scrollTop > 20 ||
     document.documentElement.scrollTop > 20

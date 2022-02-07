@@ -23,6 +23,12 @@
       width: 274px;
     }
   }
+  // .film-card__list
+  &__list {
+padding-left: 10px;
+padding-right: 10px;
+padding-bottom: 10px;
+  }
 
   // .film-card__title
   &__title {
@@ -61,6 +67,7 @@
 
   // .film-card__year
   &__year {
+    min-width: 40px;
     font-family: var(--primary-font);
     font-style: normal;
     font-weight: 500;

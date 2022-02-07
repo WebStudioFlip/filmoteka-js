@@ -1,8 +1,8 @@
 
 import './sass/main.scss';
-import './js/localStorage';
-
-// Импорт js кнопки скролла
 import './js/scrollUpBtn';
+import './js/buildLibrary';
+// Импорт js кнопки скролла
+import './js/myLibraryActive';
 
 

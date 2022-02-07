@@ -1,5 +1,6 @@
 html {
-  scroll-behavior: smooth;
+  height: auto;  
+  scroll-behavior: smooth;    
 }
 
 /* Убираем внутренние отступы */
@@ -46,7 +47,7 @@ img {
   padding-right: 15px;
 
   @include mq(mobile-only) {
-    max-width: 480px;
+    max-width: 560px;
     min-width: 320px;
   }
   @include mq(tablet) {

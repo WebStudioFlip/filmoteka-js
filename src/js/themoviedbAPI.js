@@ -7,8 +7,11 @@ export class TheMoviebdhAPI {
   constructor(keyword = null) {
     this.page = 1;
     this.keyword = keyword;
+    this.watched=[];
+    this.queue =[];
     this.genres = [];
-    this.getGenresList();       
+    this.selected = "watched" // "queue"
+    this.getGenresList();
   }
 
   getFavoriteFilms() {
@@ -19,11 +22,15 @@ export class TheMoviebdhAPI {
         }
         return response
           .json()
-          .then(result => {     
+          .then(result => {
             for (let index = 0; index < result.results.length; index++) {
-              result.results[index].genre_ids =  result.results[index].genre_ids.map(el => this.decodeGenre(el))  
-              result.results[index].release_date =    this.decodeYear (result.results[index].release_date)                    
-            }          
+              result.results[index].genre_ids = result.results[index].genre_ids.map(el =>
+                this.decodeGenre(el),
+              );
+              result.results[index].release_date = this.decodeYear(
+                result.results[index].release_date,
+              );
+            }
             return result.results;
           })
           .catch(err => console.log(err));
@@ -43,11 +50,13 @@ export class TheMoviebdhAPI {
         }
         return response.json();
       })
-      .then(result => {         
+      .then(result => {
         for (let index = 0; index < result.results.length; index++) {
-          result.results[index].genre_ids =  result.results[index].genre_ids.map(el => this.decodeGenre(el))
-          result.results[index].release_date =    this.decodeYear (result.results[index].release_date)          
-        }              
+          result.results[index].genre_ids = result.results[index].genre_ids.map(el =>
+            this.decodeGenre(el),
+          );
+          result.results[index].release_date = this.decodeYear(result.results[index].release_date);
+        }
         return result;
       })
       .catch(err => console.log(err));
@@ -65,27 +74,30 @@ export class TheMoviebdhAPI {
       .catch(err => console.log(err));
   }
 
-  decodeGenre(idGenre){
-    return this.genres.find(el => el.id === idGenre).name
+  searchFilmsCompletes (movieId) {
+    return fetch(
+      'https://api.themoviedb.org/3/movie/' + movieId + '?api_key=9f2bc6dc8b2f46ed6de79a15158912b2',
+    )
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(response.status);
+        }
+        return response.json();
+      })
+      .then(result => {        
+        result.genres = result.genres.map(el => el.name);
+        result.release_date = this.decodeYear(result.release_date);        
+        return result;
+      })
+      .catch(err => console.log(err));
   }
 
-  decodeYear (dateText) {
-const date = new Date (dateText)
-    return date.getFullYear()
+  decodeGenre(idGenre) {
+    return this.genres.find(el => el.id === idGenre).name;
   }
-}
 
-export function searchFilmsCompletes(movieId) {
-  return fetch(
-    'https://api.themoviedb.org/3/movie/' + movieId + '?api_key=9f2bc6dc8b2f46ed6de79a15158912b2',
-  ).then(response => {
-    if (!response.ok) {
-      throw new Error(response.status);
-    }
-    return response.json();
-  });
-}
-
-function fetchAPI (url) {
-  
+  decodeYear(dateText) {
+    const date = new Date(dateText);
+    return date.getFullYear();
+  }
 }

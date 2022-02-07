@@ -19,13 +19,17 @@
 
 .header-container {
   position: relative;
-  padding-bottom: 97px;
-  padding-top: 41px;
+  padding-bottom: 65px;
+  padding-top: 40px;
   padding-left: 20px;
   padding-right: 20px;
   @include mq(tablet) {
-    padding-left: 60px;
-    padding-right: 60px;
+    padding-left: 75px;
+    padding-right: 75px;
+   }
+   @include mq(desktop) { 
+    padding-left: 70px;
+    padding-right: 70px;
    }
 }
 
@@ -203,23 +207,16 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  margin-bottom: 37px;
-  @include mq(tablet) {
-    margin-bottom: 45px;
-  }
-  @include mq(desktop) {
-    margin-bottom: 45px;
-  }
-}
+  margin-bottom: 45px;
+ }
 .header-library {
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
     url(../images/bg-header-library.jpg);
-  background-size: contain;
-
+  background-size: cover;
+  background-repeat: no-repeat;
   padding-top: 41px;
 }
-.buttons-block {
-  padding-bottom: 65px;
+.buttons-block {  
   display: flex;
   justify-content: center;
   align-items: center;
