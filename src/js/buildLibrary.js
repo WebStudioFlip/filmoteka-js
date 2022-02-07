@@ -92,6 +92,11 @@ function onCloseBtn() {
     scrollUpBtn.classList.remove('btn-position');
   
     window.removeEventListener('keydown', closeModalHandler);
+    if (theMoviebdhAPI.selected === "watched") {
+      getLocaleWatched()
+      return;
+    } 
+    getLocaleQueue()
   }
   
   function closeModalHandler(event) {

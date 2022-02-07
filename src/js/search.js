@@ -23,7 +23,7 @@ backdropEl.addEventListener('click', closeBackdrop);
 
 const theMoviebdhAPI = new TheMoviebdhAPI();
 //localStorage.clear()
-function creatPagination(totalItems) {
+function creatPagination(totalItems, onClick) {
   const optionsPagination = {
     totalItems: totalItems,
     itemsPerPage: 20,
@@ -32,10 +32,10 @@ function creatPagination(totalItems) {
     centerAlign: false,
   };
   const pagination = new Pagination(container, optionsPagination);
-  pagination.on('beforeMove', onPaginationClick);
+  pagination.on('beforeMove',onClick );
 }
 
-function onPaginationClick(event) {
+function onPaginationSearchClick(event) {
   theMoviebdhAPI.page = event.page;
   theMoviebdhAPI.searchFilms().then(data => {
     galleryListEl.innerHTML = '';
@@ -44,12 +44,30 @@ function onPaginationClick(event) {
   });
 }
 
+function onPaginationFavoriteClick(event) {
+  theMoviebdhAPI.page = event.page;
+  theMoviebdhAPI.getFavoriteFilms().then(data => {
+    galleryListEl.innerHTML = '';
+    errorText.innerHTML = '';
+    galleryListEl.insertAdjacentHTML('beforeend', galleryCardsTemplate(data.results));
+  });
+}
+
 theMoviebdhAPI
   .getFavoriteFilms()
-  .then(data => galleryListEl.insertAdjacentHTML('beforeend', galleryCardsTemplate(data)));
+  .then(data => {
+    console.log(data)
+    if (data.total_results > 20) {
+      creatPagination(data.total_results, onPaginationFavoriteClick);
+    } else {
+      container.innerHTML = '';
+    }
+    galleryListEl.insertAdjacentHTML('beforeend', galleryCardsTemplate(data.results))});
 
 function onFormSubmit(event) {
   event.preventDefault();
+  const loadingImage = document.querySelector(".loading-modal")     
+    loadingImage.classList.remove("loading-hidden");
   theMoviebdhAPI.keyword = searchField.value;
   if (!theMoviebdhAPI.keyword.length) {
     theMoviebdhAPI.getFavoriteFilms().then(data => {
@@ -62,17 +80,19 @@ function onFormSubmit(event) {
 
   theMoviebdhAPI.searchFilms().then((data = { results: [] }) => {
     if (!data.results.length) {
+      loadingImage.classList.add("loading-hidden");
       errorText.innerHTML = 'Search result not successful. Enter the correct movie name and';
       return;
     }
     if (data.total_results > 20) {
-      creatPagination(data.total_results);
+      creatPagination(data.total_results, onPaginationSearchClick);
     } else {
       container.innerHTML = '';
     }
     galleryListEl.innerHTML = '';
     errorText.innerHTML = '';
     galleryListEl.insertAdjacentHTML('beforeend', galleryCardsTemplate(data.results));
+    loadingImage.classList.add("loading-hidden");
   });
 }
 
@@ -245,8 +265,7 @@ export function AddToQueue() {
               1,
             );
             localStorage.setItem('myLib', JSON.stringify(myLibArr));
-            btnWatchedEl.textContent = 'ADD TO WATCHED';
-            console.log(localStorage)
+            btnWatchedEl.textContent = 'ADD TO WATCHED';            
           }
         }
       }

@@ -3,6 +3,16 @@ html {
   scroll-behavior: smooth;    
 }
 
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex-grow: 1;
+}
+
 /* Убираем внутренние отступы */
 ul,
 ol {
@@ -45,13 +55,12 @@ img {
   margin-right: auto;
   padding-left: 15px;
   padding-right: 15px;
-
-  @include mq(mobile-only) {
-    max-width: 560px;
-    min-width: 320px;
-  }
+  width: calc(100vw - 40px);
+  max-width: 480px;
+  
   @include mq(tablet) {
-    max-width: 768px;
+    width: calc(100vw - 140px);
+    max-width: 900px;
   }
   @include mq(desktop) {
     max-width: 1280px;
