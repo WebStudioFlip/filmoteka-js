@@ -69,7 +69,8 @@ function onFormSubmit(event) {
   event.preventDefault();
   const loadingImage = document.querySelector(".loading-modal")     
     loadingImage.classList.remove("loading-hidden");
-  theMoviebdhAPI.keyword = searchField.value;
+    let keyword = searchField.value;
+    if (keyword) {theMoviebdhAPI.keyword = keyword}  
   if (!theMoviebdhAPI.keyword.length) {
     theMoviebdhAPI.getFavoriteFilms().then(data => {
       galleryListEl.innerHTML = '';
@@ -79,7 +80,7 @@ function onFormSubmit(event) {
     return;
   }
 
-  theMoviebdhAPI.searchFilms().then((data = { results: [] }) => {
+  theMoviebdhAPI.searchFilms().then((data = { results: [] }) => {    
     if (!data.results.length) {
       loadingImage.classList.add("loading-hidden");
       errorText.innerHTML = 'Search result not successful. Enter the correct movie name and';

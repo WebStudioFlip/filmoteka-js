@@ -6,11 +6,11 @@ export class TheMoviebdhAPI {
 
   constructor(keyword = null) {
     this.page = 1;
-    this.keyword = keyword;
+    this.keyword = "go";
     this.watched=[];
     this.queue =[];
     this.genres = [];
-    this.selected = "watched" // "queue"
+    this.selected = "watched"; // "queue"
     this.getGenresList();
   }
 
