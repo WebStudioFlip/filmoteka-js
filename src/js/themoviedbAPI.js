@@ -14,7 +14,7 @@ export class TheMoviebdhAPI {
     this.getGenresList();
   }
 
-  getFavoriteFilms() {
+  getFavoriteFilms() {   
     return fetch(`${this.#BASE_URL}/trending/movie/week?api_key=${this.#API_KEY}`).then(
       response => {
         if (!response.ok) {
@@ -22,7 +22,7 @@ export class TheMoviebdhAPI {
         }
         return response
           .json()
-          .then(result => {
+          .then(result => {            
             for (let index = 0; index < result.results.length; index++) {
               result.results[index].genre_ids = result.results[index].genre_ids.map(el =>
                 this.decodeGenre(el),
@@ -30,15 +30,16 @@ export class TheMoviebdhAPI {
               result.results[index].release_date = this.decodeYear(
                 result.results[index].release_date,
               );
-            }
+            }           
             return result.results;
           })
-          .catch(err => console.log(err));
+          .catch(err => {
+            console.log(err)});
       },
     );
   }
 
-  searchFilms() {
+  searchFilms() {    
     return fetch(
       `${this.#BASE_URL}/search/movie?query=${this.keyword}&page=${this.page}&api_key=${
         this.#API_KEY
@@ -57,9 +58,10 @@ export class TheMoviebdhAPI {
           );
           result.results[index].release_date = this.decodeYear(result.results[index].release_date);
         }
-        return result;
+                return result;
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        console.log(err)});
   }
 
   getGenresList() {
@@ -100,4 +102,5 @@ export class TheMoviebdhAPI {
     const date = new Date(dateText);
     return date.getFullYear();
   }
+  
 }

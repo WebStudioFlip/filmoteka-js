@@ -50,6 +50,8 @@ theMoviebdhAPI
 
 function onFormSubmit(event) {
   event.preventDefault();
+  const loadingImage = document.querySelector(".loading-modal")     
+    loadingImage.classList.remove("loading-hidden");
   theMoviebdhAPI.keyword = searchField.value;
   if (!theMoviebdhAPI.keyword.length) {
     theMoviebdhAPI.getFavoriteFilms().then(data => {
@@ -62,6 +64,7 @@ function onFormSubmit(event) {
 
   theMoviebdhAPI.searchFilms().then((data = { results: [] }) => {
     if (!data.results.length) {
+      loadingImage.classList.add("loading-hidden");
       errorText.innerHTML = 'Search result not successful. Enter the correct movie name and';
       return;
     }
@@ -73,6 +76,7 @@ function onFormSubmit(event) {
     galleryListEl.innerHTML = '';
     errorText.innerHTML = '';
     galleryListEl.insertAdjacentHTML('beforeend', galleryCardsTemplate(data.results));
+    loadingImage.classList.add("loading-hidden");
   });
 }
 
@@ -245,8 +249,7 @@ export function AddToQueue() {
               1,
             );
             localStorage.setItem('myLib', JSON.stringify(myLibArr));
-            btnWatchedEl.textContent = 'ADD TO WATCHED';
-            console.log(localStorage)
+            btnWatchedEl.textContent = 'ADD TO WATCHED';            
           }
         }
       }

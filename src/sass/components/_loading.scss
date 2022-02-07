@@ -99,12 +99,12 @@
 .loading-modal {
   height: 100vw;
   width: 100vw;
-  background: transparent;
+  background-color: #ffffff3d;
   position: fixed;
   left: 0;
   top: 0;
   z-index: 5;
-  transition: 1s all;
+  transition: 100ms all;
   opacity: 1;
   visibility: visible;
 }
@@ -112,8 +112,7 @@
 .loading-modal.loading-hidden {
   visibility: hidden;
   opacity: 0;
-  pointer-events: none;
-  transition: all 250ms linear 250ms;
+  pointer-events: none;  
 }
 
 .loadingio-spinner-bean-eater-65zpooqaxl4 {
@@ -123,4 +122,6 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  background-color: transparent;
 }
+
