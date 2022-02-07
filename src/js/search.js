@@ -203,7 +203,7 @@ export function AddToWatched() {
             );
             localStorage.setItem('queue', JSON.stringify(myQueueArr));
             btnQueueEl.textContent = 'ADD TO QUEUE';
-            console.log(localStorage)
+            
           }
         }
       }
