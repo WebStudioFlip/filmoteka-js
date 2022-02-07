@@ -1,6 +1,7 @@
 .main-section { 
   padding-top: 20px;
   padding-bottom: 40px;
+  
   @include mq(tablet) {
     padding-top: 60px;
     padding-bottom: 60px;
